@@ -1,0 +1,9 @@
+tolerance 3.0
+filetype pdb
+
+output packed_argon.pdb
+
+structure ./singleMolecule/argon.pdb 
+  number 1000
+  inside cube 0.1 0.1 0.1 38. 
+end structure

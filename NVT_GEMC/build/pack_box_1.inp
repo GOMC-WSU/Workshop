@@ -1,0 +1,9 @@
+tolerance 6.0
+filetype pdb
+
+output packed_argon_vap.pdb
+
+structure ./singleMolecule/argon.pdb 
+  number 200
+  inside cube 0.1 0.1 0.1 57. 
+end structure
