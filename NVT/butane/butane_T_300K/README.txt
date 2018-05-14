@@ -1,7 +1,7 @@
 # Run the GOMC simulation in NVT for 2 million steps.
 # Assuming that GOMC base directory was cloned in your Desktop:
 
-~/Desktop/GOMC/bin/GOMC_CPU_NVT butane_NVT.conf > output_argon.log &
+~/Desktop/GOMC/bin/GOMC_CPU_NVT butane_NVT.conf > output_butane.log &
 
 # You can monitor the simulation by running the following command: 
 
