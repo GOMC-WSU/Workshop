@@ -26,6 +26,6 @@ vmd  Argon_NVT_T_120K_BOX_0.pdb &
 
 # To extract the total energy and steps number use the following command:
 # This command will extract the first and second column of Blk file and
-# save it tp "energy.dat" file.
+# save it to "energy.dat" file.
 
 cat Blk_Argon_NVT_T_120K_BOX_0.dat | awk '{print $1 " " $2}' > energy.dat

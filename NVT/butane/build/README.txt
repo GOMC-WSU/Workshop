@@ -1,3 +1,6 @@
+# Please open the Molefacture.pdf file and follow the instruction to create 
+# butane PDB and Topology file.
+#
 # Copy the 'packmol' executable file into this directory.
 #
 # To pack 1000butane molecules in a 53 Angstrom cubic box and generate PDB and 
