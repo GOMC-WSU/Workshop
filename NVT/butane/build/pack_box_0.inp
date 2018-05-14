@@ -1,0 +1,9 @@
+tolerance 3.0
+filetype pdb
+
+output packed_butane.pdb
+
+structure ./butane_ua.pdb 
+  number 1000
+  inside cube 2.0 2.0 2.0 53. 
+end structure
