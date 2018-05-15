@@ -1,0 +1,5 @@
+REMARK original generated coordinate pdb file
+ATOM      1  O1  CO2 A   1      38.100  22.290  57.826  1.00  0.00      AO1  O
+ATOM      2  C   CO2 A   1      39.306  22.446  57.500  1.00  0.00      AO1  C
+ATOM      3  O2  CO2 A   1      40.512  22.601  57.173  1.00  0.00      AO1  O
+END

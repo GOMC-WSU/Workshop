@@ -1,6 +1,6 @@
 #set your file name without ".pdb"
 ###################################
-set filename EDUSIF_clean_min_modified
+set filename EDUSIF_clean_min_charges_modified
 set topology "../topology_EDUSIF.inp"
 set output   IRMOF_1_BOX_0
 ###################################
@@ -13,19 +13,47 @@ lappend totnameArr [$all get resname]
 set totmolsize [llength [lindex $totnameArr 0]]
 set currentN " "
 for {set i 0} {$i < $totmolsize} {incr i} {
-    set thisName [lindex $totnameArr 0 $i]
-    if {"$currentN" ne "$thisName"} {
+    if { "$i" eq "0" } {
+	set thisName [lindex $totnameArr 0 $i]
 	lappend nameArr $thisName
-	unset currentN
-	set currentN $thisName
+    } else {
+	set thisName [lindex $totnameArr 0 $i]
+	set ms [llength $nameArr]
+	set exist 0
+	#check to see if it is already exist in the list
+	for {set j 0} {$j < $ms} {incr j} {
+	    set currentN [lindex $nameArr $j]
+	    if {"$currentN" eq "$thisName"} {
+		set exist 1
+	    }
+	}
+	if {"$exist" eq "0"} {
+	    lappend nameArr $thisName
+	}
     }
 }
 
-# export each residue name to their file
+# reassign chain, resID and export each residue name to their file
 set molsize [llength $nameArr]
+set chainN A
 for {set i 0} {$i < $molsize} {incr i} {
     set thisName [lindex $nameArr $i]
-    exec grep -w "$thisName" "$infile" > "$thisName.pdb"
+    set selection [atomselect top "resname $thisName"]
+    $selection set chain "$chainN"
+    #sort the resID
+    lappend subSel [$selection get index]
+    set atomsize [llength [lindex $subSel 0]]
+    for {set j 0} {$j < $atomsize} {incr j} {
+	set indx [lindex $subSel 0 $j]
+	set temp [atomselect top "resname $thisName and index $indx"]
+	$temp set resid [expr $j + 1]
+    }
+    unset subSel
+    $selection writepdb "$thisName.pdb"
+    #increament the chain for next residue
+    set ascii [scan $chainN {%c}]
+    incr ascii
+    set chainN [format {%c} $ascii]
 }
 
 ###################################################
