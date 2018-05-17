@@ -23,3 +23,4 @@ The order of performing the workshop is as follow:
 17. adsorption/NPT_GEMC/build/reservoir
 18. adsorption/NPT_GEMC/argon_5.0_bar
 19. adsorption/NPT_GEMC/argon_10.0_bar
+20. GCMC/argon
