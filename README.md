@@ -1,5 +1,5 @@
 # Workshop
-This repository provide example and instruction in order to learn about GOMC and its capabilities.
+This repository provides example and instruction to learn about GOMC and its capabilities.
 In each direcoty, there is a README.txt or pdf file to instruct the user.
 
 The order of performing the workshop is as follow:
