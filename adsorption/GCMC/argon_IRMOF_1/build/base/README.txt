@@ -15,22 +15,22 @@ tar -xzvf CoRE-MOF-1.0-DFT-minimized.tar.gz
 
 cp ~/Downloads/CoRE-MOF-1.0-DFT-Minimized/minimized_structures/EDUSIF_clean_min.cif .
 
-###############################################################################
 # Next we should extend the unit cell by a factor of 2 for each unit cell and 
-# export as a PDB file. For this section, please refer to the VESTA.pdf file.
-#
-###############################################################################
-#
+# export as a PDB file. We will use the extend_EDUSIF_unit_cell.py script to do # this.
+# This script uses the pymatgen software to first extend the unit cell of the   # structure and write to EDUSIF_2x2x2.cif, then uses the openbabel software to  # convert the extended unit cell cif file to pdb format. To run the script, use:
+
+python extend_EDUSIF_unit_cell.py
+
 # To generate PDB and PSF, requires 3 steps.
-# 1- exported PDB file from VESTA is not quite compatible with VMD. For instance
+# 1- exported PDB file from Pymatgen is not quite compatible with VMD. For instance
 #    the PDB file has no residue name, residue ID. We use 
-#    "convert_VESTA_PDB.tcl" to reformat the output PDF from VESTA. 
+#    "convert_Pymatgen_PDB.tcl" to reformat the output PDF from Pymatgen. 
 
 # This script will treat each atom as a separate molecule kind, renumber the 
 # residue ID, and set residue name and save it in the 
 # "EDUSIF_clean_min_modified.pdb" file.
 
-vmd < convert_VESTA_PDB.tcl
+vmd < convert_Pymatgen_PDB.tcl
 
 # 2- To generate the PSF file, each molecule kind must be separated and stored
 #    in separate file. Then VMD will be used to generate the PSF file. To 
