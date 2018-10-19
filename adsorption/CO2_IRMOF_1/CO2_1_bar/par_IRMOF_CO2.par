@@ -70,19 +70,13 @@ NONBONDED_MIE
 !V(mie) = 4*eps*((sig_ij/r_ij)N-(sig_ij/r_ij)6)
 !
 !atom 	eps	     sig 	n 	eps,1-4	 sig,1-4	n,1-4
-C	47.856       3.473	12   ! SL Mayo et al. 1990
-H	 7.649       2.846	12   ! SL Mayo et al. 1990	
-ZN	27.677       4.045	12   ! SL Mayo et al. 1990
-O	48.158       3.033	12   ! SL Mayo et al. 1990
+C	47.856       3.473	12   0.0   0.0   0.0 ! SL Mayo et al. 1990
+H	 7.649       2.846	12   0.0   0.0   0.0 ! SL Mayo et al. 1990	
+ZN	27.677       4.045	12   0.0   0.0   0.0 ! SL Mayo et al. 1990
+O	48.158       3.033	12   0.0   0.0   0.0 ! SL Mayo et al. 1990
 ! Carbon dioxide
-OC	79.00  	3.050	12 ! potoff et al. 2001
-CO	27.00  	2.800	12 ! potoff et al. 2001
-! Noble gases
-NE       32.30       2.794      11   ! JR Mick et al. 2015
-AR      122.10       3.405      13   ! JR Mick et al. 2015
-KR      176.10       3.645      14   ! JR Mick et al. 2015 
-XE      243.80       3.964      14   ! JR Mick et al. 2015 
-RN      292.00       4.145      12   ! JR Mick et al. 2016 
+OC	79.00  	     3.050	12   0.0   0.0   0.0 ! potoff et al. 2001
+CO	27.00  	     2.800	12   0.0   0.0   0.0 ! potoff et al. 2001
 
 
 NBFIX_MIE

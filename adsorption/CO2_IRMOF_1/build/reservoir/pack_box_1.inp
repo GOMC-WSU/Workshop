@@ -1,9 +1,9 @@
-tolerance 3.0
+tolerance 2.0
 filetype pdb
 
 output packed_CO2.pdb
 
 structure ./singleMolecule/CO2.pdb 
   number 1000
-  inside cube 0.1 0.1 0.1 38. 
+  inside cube 0.1 0.1 0.1 50. 
 end structure

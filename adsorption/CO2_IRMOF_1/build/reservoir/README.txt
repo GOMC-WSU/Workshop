@@ -1,6 +1,6 @@
 # Copy the 'packmol' executable file into this directory.
 #
-# To pack 1000 carbon dioxide molecules in a 38 Angstrom cubic box and generate
+# To pack 1000 carbon dioxide molecules in a 50 Angstrom cubic box and generate
 # PDB and PSF file. Copy and paste the following command in your terminal:
 
 
