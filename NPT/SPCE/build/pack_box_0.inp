@@ -4,6 +4,6 @@ filetype pdb
 output packed_water.pdb
 
 structure ./singleMolecule/SPCE.pdb
-  number 300
-  inside cube 0.1 0.1 0.1 20.0 
+  number 250
+  inside cube 0.1 0.1 0.1 19.0 
 end structure

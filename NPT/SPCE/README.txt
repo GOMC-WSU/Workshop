@@ -8,7 +8,7 @@ cd Equilibration/.
 # Run the GOMC simulation in NVT for 200,000 MC steps to equilibrate the system
 # Assuming that GOMC base directory was cloned in your Desktop:
 
-~/Desktop/GOMC/bin/GOMC_CPU_NVT +p4 eq.conf > output_water.log &
+~/Code/GOMC/bin/GOMC_CPU_NVT +p4 eq.conf > output_water.log &
 
 # You can monitor the simulation by running the following command: 
 
@@ -23,10 +23,10 @@ tail -f output_water.log
 
 cd ../Production/.
  
-# Run the GOMC simulation in NPT for 1,000,000 MC steps from equilibrated system.
-# Assuming that GOMC base directory was cloned in your Desktop:
+# Run the GOMC simulation in NPT for 500,000 MC steps from equilibrated system.
+# Assuming that GOMC base directory was cloned in your home directory:
 
-~/Desktop/GOMC/bin/GOMC_CPU_NPT +p4 prod.conf > output_water.log &
+~/Code/GOMC/bin/GOMC_CPU_NPT +p4 prod.conf > output_water.log &
 
 # You can monitor the simulation by running the following command: 
 

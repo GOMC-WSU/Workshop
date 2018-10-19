@@ -1,10 +1,10 @@
 # Copy the 'packmol' executable file into this directory.
 #
-# To pack 300 SPCE water molecules in a 21 Angstrom cubic box and generate 
+# To pack 250 SPCE water molecules in a 20 Angstrom cubic box and generate 
 # PDB and PSF file. Copy and paste the following command in your terminal:
 
 
-# This command packs 300 water molecules and saves it as "packed_water.pdb"
+# This command packs 250 water molecules and saves it as "packed_water.pdb"
 ./packmol < pack_box_0.inp
 
 # This command generates new pdb and psf files using the VMD program
