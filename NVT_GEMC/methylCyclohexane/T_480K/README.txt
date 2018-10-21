@@ -1,4 +1,4 @@
-# Run the GOMC simulation in NVT for 1 million steps.
+# Run the GOMC simulation in NVT for 500,000 MC steps.
 # Assuming that GOMC base directory was cloned in your home direcotry:
 
 ~/Code/GOMC/bin/GOMC_CPU_GEMC mC6cycle_GEMC.conf > output_mC6cycle.log &
