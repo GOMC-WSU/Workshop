@@ -1,8 +1,8 @@
 # Workshop
-This repository provides example and instruction to learn about GOMC and its capabilities.
+This repository provides examples and instructions to learn about GOMC and some of its capabilities.
 In each directory, there is a README.txt or pdf file to instruct the user.
 
-The order of performing the workshop is as follow:
+The workshop exercises should be performed in the following order:
 
 1. NPT/SPCE/build
 2. NPT/SPCE/Equilibration
