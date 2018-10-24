@@ -1,10 +1,7 @@
-# Copy the 'packmol' executable file into this directory.
-#
 # To pack 400 mC6cycle molecules in a 55 Angstrom cubic box for liquid phase
 # pack 100 mC6cycle molecules in a 73 Angstrom cubic box for vapor phase and 
 # generate PDB and PSF file. 
 # Copy and paste the following command in your terminal:
-
 
 # This command packs 400 molecules and saves it as "packed_mC6cycle_liq.pdb"
 packmol < pack_box_0.inp
