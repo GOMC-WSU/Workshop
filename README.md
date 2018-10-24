@@ -2,7 +2,7 @@
 This repository provides example and instruction to learn about GOMC and its capabilities.
 In each direcoty, there is a README.txt or pdf file to instruct the user.
 
-The order of performing the workshop is as follow:
+The order of performing the workshop is as follow :
 
 1. NVT/argon/build
 2. NVT/argon/argon_T_120K
