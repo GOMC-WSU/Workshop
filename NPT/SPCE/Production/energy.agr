@@ -1,0 +1,865 @@
+# Grace project file
+#
+@version 50123
+@page size 792, 612
+@page scroll 5%
+@page inout 5%
+@link page off
+@map font 13 to "ZapfDingbats", "ZapfDingbats"
+@map font 4 to "Helvetica", "Helvetica"
+@map font 6 to "Helvetica-Bold", "Helvetica-Bold"
+@map font 5 to "Helvetica-Oblique", "Helvetica-Oblique"
+@map font 7 to "Helvetica-BoldOblique", "Helvetica-BoldOblique"
+@map font 17 to "Nimbus-Sans-L-Regular-Condensed", "Nimbus-Sans-L-Regular-Condensed"
+@map font 18 to "Nimbus-Sans-L-Bold-Condensed", "Nimbus-Sans-L-Bold-Condensed"
+@map font 19 to "Nimbus-Sans-L-Regular-Condensed-Italic", "Nimbus-Sans-L-Regular-Condensed-Italic"
+@map font 20 to "Nimbus-Sans-L-Bold-Condensed-Italic", "Nimbus-Sans-L-Bold-Condensed-Italic"
+@map font 0 to "Times-Roman", "Times-Roman"
+@map font 2 to "Times-Bold", "Times-Bold"
+@map font 1 to "Times-Italic", "Times-Italic"
+@map font 3 to "Times-BoldItalic", "Times-BoldItalic"
+@map font 8 to "Courier", "Courier"
+@map font 10 to "Courier-Bold", "Courier-Bold"
+@map font 9 to "Courier-Oblique", "Courier-Oblique"
+@map font 11 to "Courier-BoldOblique", "Courier-BoldOblique"
+@map font 29 to "URW-Palladio-L-Roman", "URW-Palladio-L-Roman"
+@map font 30 to "URW-Palladio-L-Bold", "URW-Palladio-L-Bold"
+@map font 31 to "URW-Palladio-L-Italic", "URW-Palladio-L-Italic"
+@map font 32 to "URW-Palladio-L-Bold-Italic", "URW-Palladio-L-Bold-Italic"
+@map font 12 to "Symbol", "Symbol"
+@map font 34 to "URW-Chancery-L-Medium-Italic", "URW-Chancery-L-Medium-Italic"
+@map color 0 to (255, 255, 255), "white"
+@map color 1 to (0, 0, 0), "black"
+@map color 2 to (255, 0, 0), "red"
+@map color 3 to (0, 255, 0), "green"
+@map color 4 to (0, 0, 255), "blue"
+@map color 5 to (255, 255, 0), "yellow"
+@map color 6 to (188, 143, 143), "brown"
+@map color 7 to (220, 220, 220), "grey"
+@map color 8 to (148, 0, 211), "violet"
+@map color 9 to (0, 255, 255), "cyan"
+@map color 10 to (255, 0, 255), "magenta"
+@map color 11 to (255, 165, 0), "orange"
+@map color 12 to (114, 33, 188), "indigo"
+@map color 13 to (103, 7, 72), "maroon"
+@map color 14 to (64, 224, 208), "turquoise"
+@map color 15 to (0, 139, 0), "green4"
+@reference date 0
+@date wrap off
+@date wrap year 1950
+@default linewidth 2.0
+@default linestyle 1
+@default color 1
+@default pattern 1
+@default font 0
+@default char size 1.000000
+@default symbol size 1.000000
+@default sformat "%.8g"
+@background color 0
+@page background fill on
+@timestamp off
+@timestamp 0.03, 0.03
+@timestamp color 1
+@timestamp rot 0
+@timestamp font 0
+@timestamp char size 1.000000
+@timestamp def "Wed Oct 24 14:56:06 2018"
+@r0 off
+@link r0 to g0
+@r0 type above
+@r0 linestyle 1
+@r0 linewidth 1.0
+@r0 color 1
+@r0 line 0, 0, 0, 0
+@r1 off
+@link r1 to g0
+@r1 type above
+@r1 linestyle 1
+@r1 linewidth 1.0
+@r1 color 1
+@r1 line 0, 0, 0, 0
+@r2 off
+@link r2 to g0
+@r2 type above
+@r2 linestyle 1
+@r2 linewidth 1.0
+@r2 color 1
+@r2 line 0, 0, 0, 0
+@r3 off
+@link r3 to g0
+@r3 type above
+@r3 linestyle 1
+@r3 linewidth 1.0
+@r3 color 1
+@r3 line 0, 0, 0, 0
+@r4 off
+@link r4 to g0
+@r4 type above
+@r4 linestyle 1
+@r4 linewidth 1.0
+@r4 color 1
+@r4 line 0, 0, 0, 0
+@g0 on
+@g0 hidden false
+@g0 type XY
+@g0 stacked false
+@g0 bar hgap 0.000000
+@g0 fixedpoint off
+@g0 fixedpoint type 0
+@g0 fixedpoint xy 0.000000, 0.000000
+@g0 fixedpoint format general general
+@g0 fixedpoint prec 6, 6
+@with g0
+@    world 0, -1420000, 500000, -1320000
+@    stack world 0, 0, 0, 0
+@    znorm 1
+@    view 0.200000, 0.150000, 1.200000, 0.850000
+@    title "SPC/E Water"
+@    title font 0
+@    title size 1.500000
+@    title color 1
+@    subtitle "MPT MC; 300 K, 1 bar"
+@    subtitle font 0
+@    subtitle size 1.000000
+@    subtitle color 1
+@    xaxes scale Normal
+@    yaxes scale Normal
+@    xaxes invert off
+@    yaxes invert off
+@    xaxis  on
+@    xaxis  type zero false
+@    xaxis  offset 0.000000 , 0.000000
+@    xaxis  bar on
+@    xaxis  bar color 1
+@    xaxis  bar linestyle 1
+@    xaxis  bar linewidth 2.0
+@    xaxis  label "Monte Carlo Step"
+@    xaxis  label layout para
+@    xaxis  label place auto
+@    xaxis  label char size 1.500000
+@    xaxis  label font 0
+@    xaxis  label color 1
+@    xaxis  label place normal
+@    xaxis  tick on
+@    xaxis  tick major 100000
+@    xaxis  tick minor ticks 1
+@    xaxis  tick default 6
+@    xaxis  tick place rounded true
+@    xaxis  tick in
+@    xaxis  tick major size 1.000000
+@    xaxis  tick major color 1
+@    xaxis  tick major linewidth 2.0
+@    xaxis  tick major linestyle 1
+@    xaxis  tick major grid off
+@    xaxis  tick minor color 1
+@    xaxis  tick minor linewidth 2.0
+@    xaxis  tick minor linestyle 1
+@    xaxis  tick minor grid off
+@    xaxis  tick minor size 0.500000
+@    xaxis  ticklabel on
+@    xaxis  ticklabel format general
+@    xaxis  ticklabel prec 5
+@    xaxis  ticklabel formula ""
+@    xaxis  ticklabel append ""
+@    xaxis  ticklabel prepend ""
+@    xaxis  ticklabel angle 0
+@    xaxis  ticklabel skip 0
+@    xaxis  ticklabel stagger 0
+@    xaxis  ticklabel place normal
+@    xaxis  ticklabel offset auto
+@    xaxis  ticklabel offset 0.000000 , 0.010000
+@    xaxis  ticklabel start type auto
+@    xaxis  ticklabel start 0.000000
+@    xaxis  ticklabel stop type auto
+@    xaxis  ticklabel stop 0.000000
+@    xaxis  ticklabel char size 1.200000
+@    xaxis  ticklabel font 0
+@    xaxis  ticklabel color 1
+@    xaxis  tick place both
+@    xaxis  tick spec type none
+@    yaxis  on
+@    yaxis  type zero false
+@    yaxis  offset 0.000000 , 0.000000
+@    yaxis  bar on
+@    yaxis  bar color 1
+@    yaxis  bar linestyle 1
+@    yaxis  bar linewidth 2.0
+@    yaxis  label "Energy (K)"
+@    yaxis  label layout para
+@    yaxis  label place auto
+@    yaxis  label char size 1.500000
+@    yaxis  label font 0
+@    yaxis  label color 1
+@    yaxis  label place normal
+@    yaxis  tick on
+@    yaxis  tick major 20000
+@    yaxis  tick minor ticks 1
+@    yaxis  tick default 6
+@    yaxis  tick place rounded true
+@    yaxis  tick in
+@    yaxis  tick major size 1.000000
+@    yaxis  tick major color 1
+@    yaxis  tick major linewidth 2.0
+@    yaxis  tick major linestyle 1
+@    yaxis  tick major grid off
+@    yaxis  tick minor color 1
+@    yaxis  tick minor linewidth 2.0
+@    yaxis  tick minor linestyle 1
+@    yaxis  tick minor grid off
+@    yaxis  tick minor size 0.500000
+@    yaxis  ticklabel on
+@    yaxis  ticklabel format scientific
+@    yaxis  ticklabel prec 2
+@    yaxis  ticklabel formula ""
+@    yaxis  ticklabel append ""
+@    yaxis  ticklabel prepend ""
+@    yaxis  ticklabel angle 0
+@    yaxis  ticklabel skip 0
+@    yaxis  ticklabel stagger 0
+@    yaxis  ticklabel place normal
+@    yaxis  ticklabel offset auto
+@    yaxis  ticklabel offset 0.000000 , 0.010000
+@    yaxis  ticklabel start type auto
+@    yaxis  ticklabel start 0.000000
+@    yaxis  ticklabel stop type auto
+@    yaxis  ticklabel stop 0.000000
+@    yaxis  ticklabel char size 1.200000
+@    yaxis  ticklabel font 0
+@    yaxis  ticklabel color 1
+@    yaxis  tick place both
+@    yaxis  tick spec type none
+@    altxaxis  off
+@    altyaxis  off
+@    legend on
+@    legend loctype view
+@    legend 0.85, 0.8
+@    legend box color 1
+@    legend box pattern 1
+@    legend box linewidth 1.0
+@    legend box linestyle 1
+@    legend box fill color 0
+@    legend box fill pattern 1
+@    legend font 0
+@    legend char size 1.000000
+@    legend color 1
+@    legend length 4
+@    legend vgap 1
+@    legend hgap 1
+@    legend invert false
+@    frame type 0
+@    frame linestyle 1
+@    frame linewidth 2.0
+@    frame color 1
+@    frame pattern 1
+@    frame background color 0
+@    frame background pattern 0
+@    s0 hidden false
+@    s0 type xy
+@    s0 symbol 0
+@    s0 symbol size 1.000000
+@    s0 symbol color 1
+@    s0 symbol pattern 1
+@    s0 symbol fill color 1
+@    s0 symbol fill pattern 0
+@    s0 symbol linewidth 2.0
+@    s0 symbol linestyle 1
+@    s0 symbol char 65
+@    s0 symbol char font 0
+@    s0 symbol skip 0
+@    s0 line type 1
+@    s0 line linestyle 1
+@    s0 line linewidth 2.0
+@    s0 line color 1
+@    s0 line pattern 1
+@    s0 baseline type 0
+@    s0 baseline off
+@    s0 dropline off
+@    s0 fill type 0
+@    s0 fill rule 0
+@    s0 fill color 1
+@    s0 fill pattern 1
+@    s0 avalue off
+@    s0 avalue type 2
+@    s0 avalue char size 1.000000
+@    s0 avalue font 0
+@    s0 avalue color 1
+@    s0 avalue rot 0
+@    s0 avalue format general
+@    s0 avalue prec 3
+@    s0 avalue prepend ""
+@    s0 avalue append ""
+@    s0 avalue offset 0.000000 , 0.000000
+@    s0 errorbar on
+@    s0 errorbar place both
+@    s0 errorbar color 1
+@    s0 errorbar pattern 1
+@    s0 errorbar size 1.000000
+@    s0 errorbar linewidth 2.0
+@    s0 errorbar linestyle 1
+@    s0 errorbar riser linewidth 2.0
+@    s0 errorbar riser linestyle 1
+@    s0 errorbar riser clip off
+@    s0 errorbar riser clip length 0.100000
+@    s0 comment "energy_fluct.dat"
+@    s0 legend  "Fluctuations"
+@    s1 hidden false
+@    s1 type xy
+@    s1 symbol 1
+@    s1 symbol size 1.000000
+@    s1 symbol color 2
+@    s1 symbol pattern 1
+@    s1 symbol fill color 2
+@    s1 symbol fill pattern 8
+@    s1 symbol linewidth 2.0
+@    s1 symbol linestyle 1
+@    s1 symbol char 65
+@    s1 symbol char font 0
+@    s1 symbol skip 0
+@    s1 line type 1
+@    s1 line linestyle 1
+@    s1 line linewidth 2.0
+@    s1 line color 2
+@    s1 line pattern 1
+@    s1 baseline type 0
+@    s1 baseline off
+@    s1 dropline off
+@    s1 fill type 0
+@    s1 fill rule 0
+@    s1 fill color 1
+@    s1 fill pattern 1
+@    s1 avalue off
+@    s1 avalue type 2
+@    s1 avalue char size 1.000000
+@    s1 avalue font 0
+@    s1 avalue color 1
+@    s1 avalue rot 0
+@    s1 avalue format general
+@    s1 avalue prec 3
+@    s1 avalue prepend ""
+@    s1 avalue append ""
+@    s1 avalue offset 0.000000 , 0.000000
+@    s1 errorbar on
+@    s1 errorbar place both
+@    s1 errorbar color 2
+@    s1 errorbar pattern 1
+@    s1 errorbar size 1.000000
+@    s1 errorbar linewidth 2.0
+@    s1 errorbar linestyle 1
+@    s1 errorbar riser linewidth 2.0
+@    s1 errorbar riser linestyle 1
+@    s1 errorbar riser clip off
+@    s1 errorbar riser clip length 0.100000
+@    s1 comment "energy.dat"
+@    s1 legend  "Block Average"
+@target G0.S0
+@type xy
+0 -1334833.9
+1000 -1335016.1
+2000 -1335066.3
+3000 -1339931.4
+4000 -1343155.4
+5000 -1348230.9
+6000 -1346836.1
+7000 -1342086
+8000 -1337984.2
+9000 -1342306.3
+10000 -1344503.3
+11000 -1341173.6
+12000 -1338783.3
+13000 -1351497.7
+14000 -1338932.7
+15000 -1345942.1
+16000 -1350466.6
+17000 -1353965.3
+18000 -1352559.8
+19000 -1348293.3
+20000 -1341914.9
+21000 -1344211.7
+22000 -1337950.9
+23000 -1340300.8
+24000 -1340717.3
+25000 -1335959.7
+26000 -1333441.6
+27000 -1341035.9
+28000 -1334262.5
+29000 -1340879.5
+30000 -1343777.5
+31000 -1345637.9
+32000 -1346403.5
+33000 -1347132.8
+34000 -1341330.7
+35000 -1335566.4
+36000 -1346384.5
+37000 -1343332.2
+38000 -1349082.4
+39000 -1353553.6
+40000 -1343939.3
+41000 -1351708.3
+42000 -1350185
+43000 -1344614.4
+44000 -1341199.1
+45000 -1341724.9
+46000 -1342904.3
+47000 -1353208.6
+48000 -1352144.8
+49000 -1351587.5
+50000 -1345422.3
+51000 -1346336.2
+52000 -1352861.7
+53000 -1351158.5
+54000 -1340431.8
+55000 -1342273.2
+56000 -1339328.3
+57000 -1343013.1
+58000 -1353434.4
+59000 -1346231.9
+60000 -1336497.6
+61000 -1345464.3
+62000 -1356384.3
+63000 -1360495.8
+64000 -1360761.1
+65000 -1352979.2
+66000 -1360334.4
+67000 -1353684.4
+68000 -1353980.9
+69000 -1354435.3
+70000 -1348711.3
+71000 -1347266
+72000 -1347512.4
+73000 -1355179.6
+74000 -1344722.8
+75000 -1347643.8
+76000 -1345287.3
+77000 -1350417.7
+78000 -1349661.1
+79000 -1347386.5
+80000 -1348987.7
+81000 -1348421
+82000 -1349041.7
+83000 -1351697.7
+84000 -1358066
+85000 -1349294.8
+86000 -1346710.6
+87000 -1343836.1
+88000 -1339579.8
+89000 -1352019.3
+90000 -1358558.6
+91000 -1351376.5
+92000 -1349212.7
+93000 -1362275.3
+94000 -1358111.4
+95000 -1357463.8
+96000 -1358278
+97000 -1350795.5
+98000 -1354696.4
+99000 -1344058.9
+100000 -1351240.4
+101000 -1355689.1
+102000 -1356438.1
+103000 -1355209.8
+104000 -1349845
+105000 -1352499.2
+106000 -1346565
+107000 -1357127
+108000 -1346701.1
+109000 -1355429.1
+110000 -1353667.1
+111000 -1360813.1
+112000 -1365947.6
+113000 -1362739.2
+114000 -1361903
+115000 -1363554
+116000 -1363937.2
+117000 -1359464.3
+118000 -1363835.7
+119000 -1370479.8
+120000 -1371640.8
+121000 -1373328.5
+122000 -1368708.4
+123000 -1375741.7
+124000 -1377295
+125000 -1382007.4
+126000 -1378282.6
+127000 -1374190.5
+128000 -1374182.7
+129000 -1374112.8
+130000 -1373559.2
+131000 -1371961.7
+132000 -1375196.3
+133000 -1375420.4
+134000 -1376636.1
+135000 -1372340.6
+136000 -1368864.9
+137000 -1361699.8
+138000 -1369708.6
+139000 -1380700.1
+140000 -1377383.8
+141000 -1378847.8
+142000 -1367836
+143000 -1373759.3
+144000 -1374347.8
+145000 -1379873.5
+146000 -1386539
+147000 -1383707.9
+148000 -1385517.3
+149000 -1380137.8
+150000 -1373144.5
+151000 -1373693
+152000 -1372575.9
+153000 -1369559.1
+154000 -1369616
+155000 -1358359.7
+156000 -1362470.2
+157000 -1364570.1
+158000 -1360541.6
+159000 -1365070.1
+160000 -1368518.2
+161000 -1368597.3
+162000 -1373424.9
+163000 -1377840.1
+164000 -1376711.8
+165000 -1372067.2
+166000 -1368224.3
+167000 -1373621.9
+168000 -1381977.5
+169000 -1379458
+170000 -1382437.4
+171000 -1383379.2
+172000 -1380877.9
+173000 -1374498.5
+174000 -1382813.7
+175000 -1382371
+176000 -1373017.8
+177000 -1378814
+178000 -1372240.9
+179000 -1382629
+180000 -1381306.7
+181000 -1377484.4
+182000 -1370247.5
+183000 -1372157.7
+184000 -1372847.5
+185000 -1380039.3
+186000 -1375428
+187000 -1385399.4
+188000 -1386203.7
+189000 -1388992.5
+190000 -1383325
+191000 -1383025
+192000 -1377602.1
+193000 -1379147.5
+194000 -1386391.9
+195000 -1383576.5
+196000 -1379143.1
+197000 -1378187.6
+198000 -1380405.6
+199000 -1385318.4
+200000 -1386433.1
+201000 -1387853.2
+202000 -1395249.7
+203000 -1393321.8
+204000 -1388944.3
+205000 -1388358.4
+206000 -1389275.2
+207000 -1385223.4
+208000 -1385226.6
+209000 -1382285.6
+210000 -1383435.4
+211000 -1390590.5
+212000 -1393507
+213000 -1387250.1
+214000 -1377308
+215000 -1367105.9
+216000 -1365728
+217000 -1369024.5
+218000 -1374725.1
+219000 -1378052.4
+220000 -1368816.9
+221000 -1374523.3
+222000 -1384191.4
+223000 -1374691.2
+224000 -1383632
+225000 -1385332.2
+226000 -1381712.3
+227000 -1390946.9
+228000 -1388671.5
+229000 -1389264.8
+230000 -1390981.2
+231000 -1381998.1
+232000 -1376046.5
+233000 -1378117.3
+234000 -1376841.9
+235000 -1379385.3
+236000 -1380682.1
+237000 -1387974.1
+238000 -1378849.5
+239000 -1375611.7
+240000 -1382628.9
+241000 -1379670.8
+242000 -1375920.6
+243000 -1384155.1
+244000 -1379598.3
+245000 -1375358.5
+246000 -1379635
+247000 -1373895.1
+248000 -1374772.3
+249000 -1371250.6
+250000 -1368333.2
+251000 -1364030.8
+252000 -1361599
+253000 -1375256.6
+254000 -1383545.3
+255000 -1381001.7
+256000 -1362695.3
+257000 -1370170.5
+258000 -1378696.4
+259000 -1374813.9
+260000 -1378675.4
+261000 -1369356.5
+262000 -1368469.8
+263000 -1368729.2
+264000 -1378230.2
+265000 -1374564.1
+266000 -1373859.5
+267000 -1369552
+268000 -1367649
+269000 -1365158.1
+270000 -1366445.4
+271000 -1359903.6
+272000 -1374563.2
+273000 -1368069.4
+274000 -1371545.5
+275000 -1355165.2
+276000 -1370592.6
+277000 -1377095.3
+278000 -1374791.5
+279000 -1374543.5
+280000 -1371954.3
+281000 -1371327.7
+282000 -1365542.2
+283000 -1374776.7
+284000 -1369512.6
+285000 -1367455.2
+286000 -1375529.1
+287000 -1374577.5
+288000 -1376720
+289000 -1373303.2
+290000 -1366178.5
+291000 -1358873
+292000 -1369611.3
+293000 -1380822.1
+294000 -1382579.7
+295000 -1396382.3
+296000 -1393815.4
+297000 -1391622.3
+298000 -1389088.6
+299000 -1390919.5
+300000 -1386583.6
+301000 -1393175.3
+302000 -1389705
+303000 -1392976
+304000 -1390394.4
+305000 -1379367.4
+306000 -1378293.8
+307000 -1391982.8
+308000 -1386710.7
+309000 -1382873.2
+310000 -1390590.8
+311000 -1382064.6
+312000 -1377340.7
+313000 -1376895.1
+314000 -1371817.9
+315000 -1374695.8
+316000 -1367184.8
+317000 -1368671.7
+318000 -1367589
+319000 -1369122.2
+320000 -1356937.6
+321000 -1362471.7
+322000 -1364842.4
+323000 -1369188.7
+324000 -1368448.4
+325000 -1374553.8
+326000 -1375317.5
+327000 -1372637.8
+328000 -1373104.5
+329000 -1369445.2
+330000 -1367659.4
+331000 -1365478.4
+332000 -1359201
+333000 -1360875.4
+334000 -1364378.3
+335000 -1371097.1
+336000 -1370493
+337000 -1372088.4
+338000 -1369027.3
+339000 -1366627.6
+340000 -1364369.1
+341000 -1352070.8
+342000 -1360514.9
+343000 -1356534.2
+344000 -1361647.8
+345000 -1363031.9
+346000 -1362876.2
+347000 -1364379.6
+348000 -1369510.4
+349000 -1372248.6
+350000 -1376611.4
+351000 -1385015
+352000 -1380665
+353000 -1372620.4
+354000 -1371943.3
+355000 -1378679.5
+356000 -1378303.1
+357000 -1380990.9
+358000 -1376218.2
+359000 -1375699.6
+360000 -1373255.8
+361000 -1373695.6
+362000 -1375320.6
+363000 -1375186.2
+364000 -1378957.4
+365000 -1373420.6
+366000 -1365968.1
+367000 -1366071.4
+368000 -1366545
+369000 -1361034.7
+370000 -1371424.7
+371000 -1369668.5
+372000 -1380831
+373000 -1378449.5
+374000 -1370123
+375000 -1384176.5
+376000 -1380119.9
+377000 -1376511.9
+378000 -1384251.3
+379000 -1375284.8
+380000 -1375970.1
+381000 -1372168.4
+382000 -1382669.1
+383000 -1376306
+384000 -1380602.1
+385000 -1388627.2
+386000 -1388277.6
+387000 -1390372.4
+388000 -1383039.2
+389000 -1391279.1
+390000 -1384853.8
+391000 -1383861.4
+392000 -1372646.5
+393000 -1380368.6
+394000 -1389802.8
+395000 -1399122.1
+396000 -1392239.5
+397000 -1394713.9
+398000 -1394396.1
+399000 -1384982.6
+400000 -1382820.9
+401000 -1378677.5
+402000 -1376084.9
+403000 -1371041.9
+404000 -1380233.8
+405000 -1369374.3
+406000 -1374484.8
+407000 -1386097.1
+408000 -1386527.3
+409000 -1390311.4
+410000 -1383679.4
+411000 -1378400.6
+412000 -1374154.3
+413000 -1378359.7
+414000 -1374601.2
+415000 -1373247.9
+416000 -1369645.9
+417000 -1372950.9
+418000 -1382033.9
+419000 -1382932
+420000 -1379000.2
+421000 -1381296.4
+422000 -1385557.6
+423000 -1381267.6
+424000 -1378589.2
+425000 -1378810.2
+426000 -1383580
+427000 -1386118.1
+428000 -1382755
+429000 -1378933.8
+430000 -1375619.2
+431000 -1372937.7
+432000 -1375921.3
+433000 -1380522.8
+434000 -1374278.5
+435000 -1373320.3
+436000 -1382399.6
+437000 -1380901.4
+438000 -1386928
+439000 -1377429.6
+440000 -1373371.2
+441000 -1366144.8
+442000 -1368710.1
+443000 -1371050.2
+444000 -1379149.8
+445000 -1378317.5
+446000 -1379420
+447000 -1375533.7
+448000 -1365506.6
+449000 -1369883.8
+450000 -1368026.4
+451000 -1363352.1
+452000 -1381331.9
+453000 -1382904
+454000 -1387926
+455000 -1389888
+456000 -1400493.6
+457000 -1397407.4
+458000 -1393093.6
+459000 -1395017.8
+460000 -1394641.6
+461000 -1399892.6
+462000 -1401937.7
+463000 -1407116.4
+464000 -1400366.6
+465000 -1398919.2
+466000 -1384475.4
+467000 -1387257.7
+468000 -1392684.8
+469000 -1391423.5
+470000 -1387577.6
+471000 -1384261.7
+472000 -1388099.4
+473000 -1387606
+474000 -1385237.2
+475000 -1394007.5
+476000 -1396953.6
+477000 -1394621.3
+478000 -1389897.8
+479000 -1381553.6
+480000 -1370772.5
+481000 -1360464.5
+482000 -1369826.8
+483000 -1372688.8
+484000 -1382889.3
+485000 -1382930.1
+486000 -1384702.2
+487000 -1389373
+488000 -1382915.9
+489000 -1379902.7
+490000 -1381926.1
+491000 -1382229.5
+492000 -1381118.2
+493000 -1379842
+494000 -1380803.6
+495000 -1379581.5
+496000 -1378291.2
+497000 -1379440.3
+498000 -1376483
+499000 -1374071.5
+500000 -1375018
+&
+@target G0.S1
+@type xy
+100000 -1347007.8
+200000 -1372625.3
+300000 -1377448
+400000 -1375692.6
+500000 -1381784.9
+&

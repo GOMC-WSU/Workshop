@@ -35,7 +35,7 @@ tail -f output_water.log
 # Wait until simulation finished, then exit command by typing "ctrl C"
 
 ###############################################################################
-# To generate the RDF, we use vmd to calculate the RDF. Load the GOMC output 
+# vmd can be used to calculate the RDF. Load the GOMC output 
 # PDB and PSF file into vmd.
 
 vmd SPCE_Production_merged.psf  SPCE_Production_BOX_0.pdb &
@@ -51,11 +51,17 @@ vmd SPCE_Production_merged.psf  SPCE_Production_BOX_0.pdb &
 # 5- Click the "Save" button on the open window.
 # 6- Close the vmd application from VMD main window.
 
-# To extract the total energy and steps number use the following command:
+# to extract the instantaneous fluctuations in the energy
+cat output_water.log  | awk '/ENER_0/ {print $2, $3}' > energy_fluct.dat
+
+# to extract the instantaneous fluctuations in the energy
+cat output_water.log  | awk '/STAT_0/ {print $2, $5}' > density_fluct.dat
+
+# To extract the average total energy and steps number use the following command:
 
 cat Blk_SPCE_Production_BOX_0.dat | awk '{print $1, $2}' > energy.dat
 
-# To extract the density and steps number use the following command:
+# To extract the average density and steps number use the following command:
 
 cat Blk_SPCE_Production_BOX_0.dat | awk '{print $1, $11}' > density.dat
 
