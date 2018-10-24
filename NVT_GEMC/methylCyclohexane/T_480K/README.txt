@@ -13,16 +13,16 @@ tail -f output_mC6cycle.log
 ##############################################################################
 #
 # To extract statistical properties, we can use 'awk' command.
-# This command extract and save the density value for liquid and vapor phase.
+# These commands extract the density for the liquid and vapor phases.
 
 cat Blk_mC6cycle_GEMC_T_480K_BOX_0.dat | awk '{print $1 " " $13}' > density_liq.dat
 cat Blk_mC6cycle_GEMC_T_480K_BOX_1.dat | awk '{print $1 " " $13}' > density_vap.dat
 
-# This command extract and save the pressure value for vapor phase.
+# This command extracts the pressure calculated for the vapor phase.
 
 cat Blk_mC6cycle_GEMC_T_480K_BOX_1.dat | awk '{print $1 " " $11}' > pressure.dat
 
-# This command extract and save the heat of vaporization value.
+# This command extracts the heat of vaporization.
 
 cat Blk_mC6cycle_GEMC_T_480K_BOX_1.dat | awk '{print $1 " " $15}' > heatOfVap.dat
 
