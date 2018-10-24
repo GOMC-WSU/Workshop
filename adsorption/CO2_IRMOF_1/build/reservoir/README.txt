@@ -5,7 +5,7 @@
 
 
 # This command packs 1000 CO2 molecules and saves it as "packed_CO2.pdb"
-./packmol < pack_box_1.inp
+packmol < pack_box_1.inp
 
 # This command generates new pdb and psf files using the VMD program
 vmd < build_psf_box_1.tcl

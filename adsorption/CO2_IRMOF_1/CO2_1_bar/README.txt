@@ -1,7 +1,7 @@
 # Run the GOMC simulation in GCMC for 2 million steps.
-# Assuming that GOMC base directory was cloned in your home directory:
+# Assuming that GOMC binary is added to the path:
 
-~/Code/GOMC/bin/GOMC_CPU_GCMC +p4 carbondioxide_GCMC.conf > output_CO2.log &
+GOMC_CPU_GCMC +p1 carbondioxide_GCMC.conf > output_CO2.log &
 
 # You can monitor the simulation by running the following command: 
 
