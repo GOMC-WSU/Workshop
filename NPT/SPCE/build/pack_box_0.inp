@@ -1,9 +1,0 @@
-tolerance 2.7
-filetype pdb
-
-output packed_water.pdb
-
-structure ./singleMolecule/SPCE.pdb
-  number 250
-  inside cube 0.1 0.1 0.1 19.0 
-end structure

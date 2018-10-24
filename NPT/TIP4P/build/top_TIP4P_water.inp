@@ -1,0 +1,29 @@
+*
+* Custom top file -- TIP4P water
+*
+36  1
+
+!
+!
+! 
+MASS   1  OH    15.9994  O !
+MASS   2  HO     1.0080  H !
+MASS   3  MO     0.0000  D ! Dummy atom for TIP4P model
+
+
+DEFA FIRS none LAST none
+AUTOGENERATE ANGLES DIHEDRALS
+
+
+RESI TIP4          0.00 ! water TIP4P model
+GROUP
+ATOM O   OH        0.000 !      O
+ATOM H1  HO        0.520 !    / | \
+ATOM H2	 HO   	   0.520 !   /  M  \
+ATOM M   MO       -1.040 ! H1       H2
+BOND O H1  O H2  O M       
+PATCHING FIRS NONE LAST NONE
+
+
+
+END

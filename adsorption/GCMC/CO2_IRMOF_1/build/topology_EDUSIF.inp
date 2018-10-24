@@ -1,0 +1,89 @@
+*
+* Topology file for IRMOF-1 (Zn4O(BDC)3)
+* Using charge from:
+* Screening of Metal-Organic Frameworks for Carbon Dioxide Capture from
+* Flue Gas Using a Combined Experimental and Modeling Approach
+* DOI: 10.1021/ja9057234
+*
+
+!
+!
+!
+MASS   1  O      15.999  O  !
+MASS   2  C      12.0107 C  !
+MASS   3  H	 1.00794 H  !
+MASS   4  ZN     65.38   ZN !
+MASS   5  NE     20.1797 NE !
+MASS   6  AR     39.948  AR !
+MASS   7  KR     83.798  KR !
+MASS   8  XE    131.293  XE !
+MASS   9  RN    222.000  RN !
+MASS  10  CO     12.011   C !
+MASS  11  OC     15.9994  O !
+
+DEFA FIRS none LAST none
+AUTOGENERATE ANGLES DIHEDRALS
+
+
+RESI CO2         0.00 ! CO2 - TraPPE
+GROUP
+ATOM O1   OC    -0.35 !  
+ATOM C    CO     0.70 !  O1--C--O2
+ATOM O2   OC    -0.35 !
+BOND O1  C   C  O2
+PATCHING FIRS NONE LAST NONE
+
+RESI ZN1          1.333  ! IRMOF-1 - DFT charges
+ATOM ZN1  ZN      1.333  !  
+PATCHING FIRS NONE LAST NONE
+
+RESI O1          -1.564  ! IRMOF-1 - DFT charges
+ATOM O1  O    	 -1.564  !
+PATCHING FIRS NONE LAST NONE
+
+RESI O2          -0.641  ! IRMOF-1 - DFT charges
+ATOM O2  O    	 -0.641  !
+PATCHING FIRS NONE LAST NONE
+
+RESI C1          -0.167  ! IRMOF-1 - DFT charges
+ATOM C1  C       -0.167  !
+PATCHING FIRS NONE LAST NONE
+
+RESI C2           0.558  ! IRMOF-1 - DFT charges
+ATOM C2  C     	  0.558  !
+PATCHING FIRS NONE LAST NONE
+
+RESI C3           0.106  ! IRMOF-1 - DFT charges
+ATOM C3  C     	  0.106  !
+PATCHING FIRS NONE LAST NONE
+
+RESI H1           0.162  ! IRMOF-1 - DFT charges
+ATOM H1   H       0.162  !
+PATCHING FIRS NONE LAST NONE
+
+RESI NE          0.00 ! neon
+GROUP
+ATOM NE  NE      0.00 !  *
+PATCHING FIRS NONE LAST NONE
+
+RESI AR          0.00 ! argon 
+GROUP
+ATOM AR  AR      0.00 !  *
+PATCHING FIRS NONE LAST NONE
+
+RESI KR          0.00 ! krypton
+GROUP
+ATOM KR  KR      0.00 !  *
+PATCHING FIRS NONE LAST NONE
+
+RESI XE          0.00 ! xenon
+GROUP
+ATOM XE  XE      0.00 !  *
+PATCHING FIRS NONE LAST NONE
+
+RESI RN          0.00 ! radon 
+GROUP
+ATOM RN  RN      0.00 !  *
+PATCHING FIRS NONE LAST NONE
+
+END
