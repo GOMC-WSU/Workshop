@@ -54,7 +54,7 @@ vmd SPCE_Production_merged.psf  SPCE_Production_BOX_0.pdb &
 # to extract the instantaneous fluctuations in the energy
 cat output_water.log  | awk '/ENER_0/ {print $2, $3}' > energy_fluct.dat
 
-# to extract the instantaneous fluctuations in the energy
+# to extract the instantaneous fluctuations in the density
 cat output_water.log  | awk '/STAT_0/ {print $2, $5}' > density_fluct.dat
 
 # To extract the average total energy and steps number use the following command:
