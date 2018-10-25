@@ -1,0 +1,865 @@
+# Grace project file
+#
+@version 50123
+@page size 792, 612
+@page scroll 5%
+@page inout 5%
+@link page off
+@map font 13 to "ZapfDingbats", "ZapfDingbats"
+@map font 4 to "Helvetica", "Helvetica"
+@map font 6 to "Helvetica-Bold", "Helvetica-Bold"
+@map font 5 to "Helvetica-Oblique", "Helvetica-Oblique"
+@map font 7 to "Helvetica-BoldOblique", "Helvetica-BoldOblique"
+@map font 17 to "Nimbus-Sans-L-Regular-Condensed", "Nimbus-Sans-L-Regular-Condensed"
+@map font 18 to "Nimbus-Sans-L-Bold-Condensed", "Nimbus-Sans-L-Bold-Condensed"
+@map font 19 to "Nimbus-Sans-L-Regular-Condensed-Italic", "Nimbus-Sans-L-Regular-Condensed-Italic"
+@map font 20 to "Nimbus-Sans-L-Bold-Condensed-Italic", "Nimbus-Sans-L-Bold-Condensed-Italic"
+@map font 0 to "Times-Roman", "Times-Roman"
+@map font 2 to "Times-Bold", "Times-Bold"
+@map font 1 to "Times-Italic", "Times-Italic"
+@map font 3 to "Times-BoldItalic", "Times-BoldItalic"
+@map font 8 to "Courier", "Courier"
+@map font 10 to "Courier-Bold", "Courier-Bold"
+@map font 9 to "Courier-Oblique", "Courier-Oblique"
+@map font 11 to "Courier-BoldOblique", "Courier-BoldOblique"
+@map font 29 to "URW-Palladio-L-Roman", "URW-Palladio-L-Roman"
+@map font 30 to "URW-Palladio-L-Bold", "URW-Palladio-L-Bold"
+@map font 31 to "URW-Palladio-L-Italic", "URW-Palladio-L-Italic"
+@map font 32 to "URW-Palladio-L-Bold-Italic", "URW-Palladio-L-Bold-Italic"
+@map font 12 to "Symbol", "Symbol"
+@map font 34 to "URW-Chancery-L-Medium-Italic", "URW-Chancery-L-Medium-Italic"
+@map color 0 to (255, 255, 255), "white"
+@map color 1 to (0, 0, 0), "black"
+@map color 2 to (255, 0, 0), "red"
+@map color 3 to (0, 255, 0), "green"
+@map color 4 to (0, 0, 255), "blue"
+@map color 5 to (255, 255, 0), "yellow"
+@map color 6 to (188, 143, 143), "brown"
+@map color 7 to (220, 220, 220), "grey"
+@map color 8 to (148, 0, 211), "violet"
+@map color 9 to (0, 255, 255), "cyan"
+@map color 10 to (255, 0, 255), "magenta"
+@map color 11 to (255, 165, 0), "orange"
+@map color 12 to (114, 33, 188), "indigo"
+@map color 13 to (103, 7, 72), "maroon"
+@map color 14 to (64, 224, 208), "turquoise"
+@map color 15 to (0, 139, 0), "green4"
+@reference date 0
+@date wrap off
+@date wrap year 1950
+@default linewidth 2.0
+@default linestyle 1
+@default color 1
+@default pattern 1
+@default font 0
+@default char size 1.000000
+@default symbol size 1.000000
+@default sformat "%.8g"
+@background color 0
+@page background fill on
+@timestamp off
+@timestamp 0.03, 0.03
+@timestamp color 1
+@timestamp rot 0
+@timestamp font 0
+@timestamp char size 1.000000
+@timestamp def "Thu Oct 25 12:23:39 2018"
+@r0 off
+@link r0 to g0
+@r0 type above
+@r0 linestyle 1
+@r0 linewidth 1.0
+@r0 color 1
+@r0 line 0, 0, 0, 0
+@r1 off
+@link r1 to g0
+@r1 type above
+@r1 linestyle 1
+@r1 linewidth 1.0
+@r1 color 1
+@r1 line 0, 0, 0, 0
+@r2 off
+@link r2 to g0
+@r2 type above
+@r2 linestyle 1
+@r2 linewidth 1.0
+@r2 color 1
+@r2 line 0, 0, 0, 0
+@r3 off
+@link r3 to g0
+@r3 type above
+@r3 linestyle 1
+@r3 linewidth 1.0
+@r3 color 1
+@r3 line 0, 0, 0, 0
+@r4 off
+@link r4 to g0
+@r4 type above
+@r4 linestyle 1
+@r4 linewidth 1.0
+@r4 color 1
+@r4 line 0, 0, 0, 0
+@g0 on
+@g0 hidden false
+@g0 type XY
+@g0 stacked false
+@g0 bar hgap 0.000000
+@g0 fixedpoint off
+@g0 fixedpoint type 0
+@g0 fixedpoint xy 0.000000, 0.000000
+@g0 fixedpoint format general general
+@g0 fixedpoint prec 6, 6
+@with g0
+@    world 0, 0, 500000, 25
+@    stack world 0, 0, 0, 0
+@    znorm 1
+@    view 0.150000, 0.150000, 1.150000, 0.850000
+@    title "CO\s2\N Adsorption in IRMOF-1"
+@    title font 0
+@    title size 1.500000
+@    title color 1
+@    subtitle "298 K, 1 bar"
+@    subtitle font 0
+@    subtitle size 1.000000
+@    subtitle color 1
+@    xaxes scale Normal
+@    yaxes scale Normal
+@    xaxes invert off
+@    yaxes invert off
+@    xaxis  on
+@    xaxis  type zero false
+@    xaxis  offset 0.000000 , 0.000000
+@    xaxis  bar on
+@    xaxis  bar color 1
+@    xaxis  bar linestyle 1
+@    xaxis  bar linewidth 2.0
+@    xaxis  label "Monte Carlo Step"
+@    xaxis  label layout para
+@    xaxis  label place auto
+@    xaxis  label char size 1.500000
+@    xaxis  label font 0
+@    xaxis  label color 1
+@    xaxis  label place normal
+@    xaxis  tick on
+@    xaxis  tick major 100000
+@    xaxis  tick minor ticks 1
+@    xaxis  tick default 6
+@    xaxis  tick place rounded true
+@    xaxis  tick in
+@    xaxis  tick major size 1.000000
+@    xaxis  tick major color 1
+@    xaxis  tick major linewidth 2.0
+@    xaxis  tick major linestyle 1
+@    xaxis  tick major grid off
+@    xaxis  tick minor color 1
+@    xaxis  tick minor linewidth 2.0
+@    xaxis  tick minor linestyle 1
+@    xaxis  tick minor grid off
+@    xaxis  tick minor size 0.500000
+@    xaxis  ticklabel on
+@    xaxis  ticklabel format general
+@    xaxis  ticklabel prec 5
+@    xaxis  ticklabel formula ""
+@    xaxis  ticklabel append ""
+@    xaxis  ticklabel prepend ""
+@    xaxis  ticklabel angle 0
+@    xaxis  ticklabel skip 0
+@    xaxis  ticklabel stagger 0
+@    xaxis  ticklabel place normal
+@    xaxis  ticklabel offset auto
+@    xaxis  ticklabel offset 0.000000 , 0.010000
+@    xaxis  ticklabel start type auto
+@    xaxis  ticklabel start 0.000000
+@    xaxis  ticklabel stop type auto
+@    xaxis  ticklabel stop 0.000000
+@    xaxis  ticklabel char size 1.500000
+@    xaxis  ticklabel font 0
+@    xaxis  ticklabel color 1
+@    xaxis  tick place both
+@    xaxis  tick spec type none
+@    yaxis  on
+@    yaxis  type zero false
+@    yaxis  offset 0.000000 , 0.000000
+@    yaxis  bar on
+@    yaxis  bar color 1
+@    yaxis  bar linestyle 1
+@    yaxis  bar linewidth 2.0
+@    yaxis  label "Number of CO\s2\N Molecules"
+@    yaxis  label layout para
+@    yaxis  label place auto
+@    yaxis  label char size 1.500000
+@    yaxis  label font 0
+@    yaxis  label color 1
+@    yaxis  label place normal
+@    yaxis  tick on
+@    yaxis  tick major 5
+@    yaxis  tick minor ticks 1
+@    yaxis  tick default 6
+@    yaxis  tick place rounded true
+@    yaxis  tick in
+@    yaxis  tick major size 1.000000
+@    yaxis  tick major color 1
+@    yaxis  tick major linewidth 2.0
+@    yaxis  tick major linestyle 1
+@    yaxis  tick major grid off
+@    yaxis  tick minor color 1
+@    yaxis  tick minor linewidth 2.0
+@    yaxis  tick minor linestyle 1
+@    yaxis  tick minor grid off
+@    yaxis  tick minor size 0.500000
+@    yaxis  ticklabel on
+@    yaxis  ticklabel format general
+@    yaxis  ticklabel prec 5
+@    yaxis  ticklabel formula ""
+@    yaxis  ticklabel append ""
+@    yaxis  ticklabel prepend ""
+@    yaxis  ticklabel angle 0
+@    yaxis  ticklabel skip 0
+@    yaxis  ticklabel stagger 0
+@    yaxis  ticklabel place normal
+@    yaxis  ticklabel offset auto
+@    yaxis  ticklabel offset 0.000000 , 0.010000
+@    yaxis  ticklabel start type auto
+@    yaxis  ticklabel start 0.000000
+@    yaxis  ticklabel stop type auto
+@    yaxis  ticklabel stop 0.000000
+@    yaxis  ticklabel char size 1.500000
+@    yaxis  ticklabel font 0
+@    yaxis  ticklabel color 1
+@    yaxis  tick place both
+@    yaxis  tick spec type none
+@    altxaxis  off
+@    altyaxis  off
+@    legend on
+@    legend loctype view
+@    legend 0.86, 0.82
+@    legend box color 1
+@    legend box pattern 1
+@    legend box linewidth 1.0
+@    legend box linestyle 1
+@    legend box fill color 0
+@    legend box fill pattern 1
+@    legend font 0
+@    legend char size 1.000000
+@    legend color 1
+@    legend length 4
+@    legend vgap 1
+@    legend hgap 1
+@    legend invert false
+@    frame type 0
+@    frame linestyle 1
+@    frame linewidth 2.0
+@    frame color 1
+@    frame pattern 1
+@    frame background color 0
+@    frame background pattern 0
+@    s0 hidden false
+@    s0 type xy
+@    s0 symbol 0
+@    s0 symbol size 1.000000
+@    s0 symbol color 1
+@    s0 symbol pattern 1
+@    s0 symbol fill color 1
+@    s0 symbol fill pattern 0
+@    s0 symbol linewidth 2.0
+@    s0 symbol linestyle 1
+@    s0 symbol char 65
+@    s0 symbol char font 0
+@    s0 symbol skip 0
+@    s0 line type 1
+@    s0 line linestyle 1
+@    s0 line linewidth 2.0
+@    s0 line color 1
+@    s0 line pattern 1
+@    s0 baseline type 0
+@    s0 baseline off
+@    s0 dropline off
+@    s0 fill type 0
+@    s0 fill rule 0
+@    s0 fill color 1
+@    s0 fill pattern 1
+@    s0 avalue off
+@    s0 avalue type 2
+@    s0 avalue char size 1.000000
+@    s0 avalue font 0
+@    s0 avalue color 1
+@    s0 avalue rot 0
+@    s0 avalue format general
+@    s0 avalue prec 3
+@    s0 avalue prepend ""
+@    s0 avalue append ""
+@    s0 avalue offset 0.000000 , 0.000000
+@    s0 errorbar on
+@    s0 errorbar place both
+@    s0 errorbar color 1
+@    s0 errorbar pattern 1
+@    s0 errorbar size 1.000000
+@    s0 errorbar linewidth 2.0
+@    s0 errorbar linestyle 1
+@    s0 errorbar riser linewidth 2.0
+@    s0 errorbar riser linestyle 1
+@    s0 errorbar riser clip off
+@    s0 errorbar riser clip length 0.100000
+@    s0 comment "CO2_fluct.dat"
+@    s0 legend  "Fluctuations"
+@    s1 hidden false
+@    s1 type xy
+@    s1 symbol 1
+@    s1 symbol size 1.000000
+@    s1 symbol color 2
+@    s1 symbol pattern 1
+@    s1 symbol fill color 2
+@    s1 symbol fill pattern 8
+@    s1 symbol linewidth 2.0
+@    s1 symbol linestyle 1
+@    s1 symbol char 65
+@    s1 symbol char font 0
+@    s1 symbol skip 0
+@    s1 line type 1
+@    s1 line linestyle 1
+@    s1 line linewidth 2.0
+@    s1 line color 2
+@    s1 line pattern 1
+@    s1 baseline type 0
+@    s1 baseline off
+@    s1 dropline off
+@    s1 fill type 0
+@    s1 fill rule 0
+@    s1 fill color 1
+@    s1 fill pattern 1
+@    s1 avalue off
+@    s1 avalue type 2
+@    s1 avalue char size 1.000000
+@    s1 avalue font 0
+@    s1 avalue color 1
+@    s1 avalue rot 0
+@    s1 avalue format general
+@    s1 avalue prec 3
+@    s1 avalue prepend ""
+@    s1 avalue append ""
+@    s1 avalue offset 0.000000 , 0.000000
+@    s1 errorbar on
+@    s1 errorbar place both
+@    s1 errorbar color 2
+@    s1 errorbar pattern 1
+@    s1 errorbar size 1.000000
+@    s1 errorbar linewidth 2.0
+@    s1 errorbar linestyle 1
+@    s1 errorbar riser linewidth 2.0
+@    s1 errorbar riser linestyle 1
+@    s1 errorbar riser clip off
+@    s1 errorbar riser clip length 0.100000
+@    s1 comment "mol_CO2.dat"
+@    s1 legend  "Block Average"
+@target G0.S0
+@type xy
+0 0
+1000 13.9997
+2000 13.0002
+3000 14.9998
+4000 13.0002
+5000 9.99999
+6000 13.0002
+7000 6.99988
+8000 6.0002
+9000 16.9998
+10000 4.00014
+11000 9.99999
+12000 14.9998
+13000 11.9996
+14000 11.0004
+15000 13.0002
+16000 5.00029
+17000 11.9996
+18000 9.99999
+19000 9.00021
+20000 9.00021
+21000 11.0004
+22000 8.00018
+23000 8.00018
+24000 13.9997
+25000 9.99999
+26000 5.00029
+27000 11.9996
+28000 6.99988
+29000 6.99988
+30000 13.9997
+31000 11.0004
+32000 13.9997
+33000 14.9998
+34000 11.0004
+35000 6.0002
+36000 13.9997
+37000 11.9996
+38000 13.9997
+39000 8.00018
+40000 11.0004
+41000 11.0004
+42000 16.0004
+43000 16.9998
+44000 11.9996
+45000 9.99999
+46000 9.00021
+47000 11.0004
+48000 13.9997
+49000 8.00018
+50000 8.00018
+51000 11.0004
+52000 13.0002
+53000 13.9997
+54000 11.0004
+55000 8.00018
+56000 13.9997
+57000 19.9996
+58000 11.9996
+59000 11.0004
+60000 9.99999
+61000 8.00018
+62000 14.9998
+63000 14.9998
+64000 6.99988
+65000 9.00021
+66000 9.99999
+67000 5.00029
+68000 11.0004
+69000 19.0003
+70000 9.00021
+71000 9.99999
+72000 13.9997
+73000 13.9997
+74000 6.0002
+75000 11.0004
+76000 6.0002
+77000 13.0002
+78000 9.00021
+79000 8.00018
+80000 17.9998
+81000 13.0002
+82000 16.9998
+83000 11.9996
+84000 17.9998
+85000 6.99988
+86000 11.0004
+87000 11.0004
+88000 19.0003
+89000 6.99988
+90000 9.99999
+91000 11.0004
+92000 9.00021
+93000 13.0002
+94000 16.0004
+95000 9.00021
+96000 11.0004
+97000 9.99999
+98000 9.00021
+99000 8.00018
+100000 6.0002
+101000 11.0004
+102000 13.9997
+103000 13.0002
+104000 13.9997
+105000 11.0004
+106000 9.99999
+107000 16.0004
+108000 13.9997
+109000 8.00018
+110000 14.9998
+111000 5.00029
+112000 11.0004
+113000 11.9996
+114000 21.0003
+115000 11.0004
+116000 16.9998
+117000 14.9998
+118000 8.00018
+119000 13.0002
+120000 19.0003
+121000 9.00021
+122000 17.9998
+123000 11.9996
+124000 11.0004
+125000 11.0004
+126000 11.9996
+127000 19.9996
+128000 11.9996
+129000 11.9996
+130000 16.9998
+131000 16.0004
+132000 6.99988
+133000 16.0004
+134000 16.9998
+135000 9.99999
+136000 13.9997
+137000 9.99999
+138000 13.9997
+139000 13.9997
+140000 13.0002
+141000 5.00029
+142000 16.9998
+143000 9.99999
+144000 13.0002
+145000 11.9996
+146000 13.9997
+147000 9.99999
+148000 9.99999
+149000 9.00021
+150000 9.99999
+151000 16.0004
+152000 11.0004
+153000 8.00018
+154000 8.00018
+155000 14.9998
+156000 13.9997
+157000 17.9998
+158000 9.00021
+159000 6.99988
+160000 13.0002
+161000 11.9996
+162000 24.0001
+163000 13.9997
+164000 13.9997
+165000 13.0002
+166000 9.99999
+167000 11.9996
+168000 13.9997
+169000 9.99999
+170000 13.9997
+171000 9.00021
+172000 14.9998
+173000 9.00021
+174000 13.0002
+175000 9.99999
+176000 13.9997
+177000 11.0004
+178000 21.9997
+179000 13.0002
+180000 14.9998
+181000 13.0002
+182000 17.9998
+183000 11.9996
+184000 11.9996
+185000 16.0004
+186000 9.99999
+187000 11.0004
+188000 19.0003
+189000 13.0002
+190000 9.99999
+191000 11.9996
+192000 9.99999
+193000 9.99999
+194000 13.0002
+195000 16.0004
+196000 13.0002
+197000 9.00021
+198000 11.9996
+199000 13.9997
+200000 13.0002
+201000 16.0004
+202000 14.9998
+203000 14.9998
+204000 13.0002
+205000 11.9996
+206000 13.0002
+207000 24.0001
+208000 11.0004
+209000 13.9997
+210000 8.00018
+211000 13.0002
+212000 13.9997
+213000 9.99999
+214000 9.00021
+215000 14.9998
+216000 19.9996
+217000 13.9997
+218000 19.9996
+219000 13.9997
+220000 13.9997
+221000 9.99999
+222000 13.9997
+223000 14.9998
+224000 8.00018
+225000 11.9996
+226000 13.0002
+227000 14.9998
+228000 8.00018
+229000 16.9998
+230000 11.0004
+231000 11.9996
+232000 9.00021
+233000 13.0002
+234000 11.0004
+235000 6.99988
+236000 8.00018
+237000 16.0004
+238000 13.0002
+239000 9.00021
+240000 9.00021
+241000 9.00021
+242000 21.0003
+243000 13.9997
+244000 14.9998
+245000 9.00021
+246000 13.9997
+247000 6.99988
+248000 13.0002
+249000 9.00021
+250000 13.9997
+251000 19.0003
+252000 9.99999
+253000 13.9997
+254000 13.0002
+255000 17.9998
+256000 16.0004
+257000 13.0002
+258000 13.9997
+259000 11.9996
+260000 11.9996
+261000 6.99988
+262000 9.00021
+263000 9.00021
+264000 11.9996
+265000 8.00018
+266000 11.9996
+267000 6.99988
+268000 16.9998
+269000 11.0004
+270000 6.99988
+271000 19.0003
+272000 16.9998
+273000 11.9996
+274000 16.0004
+275000 11.0004
+276000 11.0004
+277000 13.0002
+278000 9.99999
+279000 14.9998
+280000 9.00021
+281000 16.0004
+282000 9.00021
+283000 14.9998
+284000 11.0004
+285000 8.00018
+286000 13.9997
+287000 9.99999
+288000 11.0004
+289000 9.99999
+290000 16.0004
+291000 13.9997
+292000 9.99999
+293000 11.9996
+294000 16.0004
+295000 6.0002
+296000 13.9997
+297000 9.00021
+298000 13.0002
+299000 14.9998
+300000 13.9997
+301000 8.00018
+302000 9.99999
+303000 13.0002
+304000 13.0002
+305000 11.0004
+306000 21.0003
+307000 17.9998
+308000 16.0004
+309000 16.0004
+310000 17.9998
+311000 14.9998
+312000 11.0004
+313000 8.00018
+314000 9.99999
+315000 16.0004
+316000 8.00018
+317000 9.99999
+318000 9.00021
+319000 8.00018
+320000 14.9998
+321000 11.9996
+322000 6.99988
+323000 11.0004
+324000 16.0004
+325000 11.9996
+326000 11.0004
+327000 13.9997
+328000 9.00021
+329000 11.0004
+330000 17.9998
+331000 9.99999
+332000 17.9998
+333000 17.9998
+334000 11.9996
+335000 6.99988
+336000 11.0004
+337000 13.0002
+338000 9.99999
+339000 9.00021
+340000 13.0002
+341000 6.0002
+342000 9.99999
+343000 9.00021
+344000 6.99988
+345000 16.0004
+346000 14.9998
+347000 13.0002
+348000 9.99999
+349000 13.0002
+350000 6.99988
+351000 13.0002
+352000 13.9997
+353000 9.99999
+354000 11.0004
+355000 11.9996
+356000 16.0004
+357000 16.0004
+358000 13.0002
+359000 13.0002
+360000 9.99999
+361000 9.99999
+362000 16.9998
+363000 9.99999
+364000 14.9998
+365000 11.9996
+366000 6.0002
+367000 19.0003
+368000 13.0002
+369000 9.99999
+370000 13.0002
+371000 11.9996
+372000 9.99999
+373000 14.9998
+374000 16.0004
+375000 8.00018
+376000 13.9997
+377000 11.9996
+378000 11.0004
+379000 9.99999
+380000 8.00018
+381000 9.99999
+382000 14.9998
+383000 11.0004
+384000 9.99999
+385000 13.9997
+386000 8.00018
+387000 9.00021
+388000 4.00014
+389000 16.9998
+390000 11.9996
+391000 19.0003
+392000 11.9996
+393000 16.0004
+394000 13.9997
+395000 11.9996
+396000 11.0004
+397000 13.9997
+398000 19.9996
+399000 13.0002
+400000 13.0002
+401000 8.00018
+402000 16.9998
+403000 6.99988
+404000 14.9998
+405000 9.00021
+406000 6.99988
+407000 13.9997
+408000 11.0004
+409000 13.9997
+410000 16.9998
+411000 8.00018
+412000 11.9996
+413000 9.99999
+414000 14.9998
+415000 13.0002
+416000 11.0004
+417000 11.9996
+418000 19.0003
+419000 9.99999
+420000 16.9998
+421000 9.99999
+422000 6.99988
+423000 19.9996
+424000 11.0004
+425000 19.9996
+426000 16.0004
+427000 13.0002
+428000 11.0004
+429000 13.9997
+430000 9.99999
+431000 6.0002
+432000 9.00021
+433000 13.0002
+434000 17.9998
+435000 5.00029
+436000 11.9996
+437000 9.00021
+438000 6.0002
+439000 21.0003
+440000 14.9998
+441000 19.9996
+442000 14.9998
+443000 8.00018
+444000 21.0003
+445000 11.9996
+446000 14.9998
+447000 11.9996
+448000 9.00021
+449000 9.00021
+450000 17.9998
+451000 16.0004
+452000 9.99999
+453000 9.00021
+454000 14.9998
+455000 11.9996
+456000 13.0002
+457000 11.9996
+458000 6.99988
+459000 16.9998
+460000 16.0004
+461000 9.99999
+462000 16.9998
+463000 13.9997
+464000 13.0002
+465000 13.0002
+466000 13.0002
+467000 19.0003
+468000 16.9998
+469000 8.00018
+470000 14.9998
+471000 14.9998
+472000 14.9998
+473000 11.0004
+474000 19.0003
+475000 14.9998
+476000 9.99999
+477000 8.00018
+478000 9.99999
+479000 13.0002
+480000 9.00021
+481000 9.99999
+482000 6.99988
+483000 13.9997
+484000 6.0002
+485000 13.9997
+486000 6.99988
+487000 17.9998
+488000 11.9996
+489000 13.9997
+490000 9.00021
+491000 11.0004
+492000 16.0004
+493000 11.0004
+494000 17.9998
+495000 11.0004
+496000 13.9997
+497000 13.0002
+498000 6.0002
+499000 9.00021
+500000 11.0004
+&
+@target G0.S1
+@type xy
+100000 11.745
+200000 12.5454
+300000 12.5289
+400000 12.1204
+500000 12.3453
+&

@@ -5,4 +5,4 @@
 packmol < pack_box_1.inp
 
 # This command generates new pdb and psf files using the VMD program
-vmd < build_psf_box_1.tcl
+vmd -dispdev text< build_psf_box_1.tcl
