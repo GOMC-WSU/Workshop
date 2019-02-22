@@ -1,0 +1,9 @@
+tolerance 3.0
+filetype pdb
+
+output packed_AAAAAA.pdb
+
+structure ../../../BUILD/resources/pdb/AAAAAA.pdb
+  number NUM#
+  inside cube 0.01 0.01 0.01 DDD0
+end structure
