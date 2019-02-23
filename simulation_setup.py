@@ -241,12 +241,25 @@ replace_text("in.conf", "EQUILSTEPS", eq_steps)
 print("Control file has been properly configured, now beginning runs setup")
 
 # Generating runs for each fugacity
-print("Total number of runs: " + len(runs))
+os.chdir('../')
+print("Total number of runs: " + str(len(runs)))
 for run in runs:
     print('Setting up run files for fugacity ' + run['fugacity'])
     current_dir = os.getcwd()
-    directory = 'run_' + run['fugacity']
+    directory = current_dir + '/run_' + run['fugacity']
     if not os.path.isdir(directory):
         os.mkdir(directory)
     os.chdir(directory)
-    
+    shutil.copyfile('../common/in.conf', './in.conf')
+    shutil.copyfile(base_directory +'/BUILD/resources/sim/gcmc_cluster.cmd', './gcmc_cluster.cmd')
+    shutil.copyfile(base_directory +'/BUILD/resources/sim/GOMC_CPU_GCMC', './GOMC_CPU_GCMC')
+    replace_text("gcmc_cluster.cmd", "PPPPP", directory)
+    replace_text("gcmc_cluster.cmd", "NNNNNN", mof_name)
+    replace_text("gcmc_cluster.cmd", "AAAAAA", adsorbate_name)
+    replace_text("gcmc_cluster.cmd", "FFF", run['fugacity'])
+    replace_text("in.conf", "TTT", temperature)
+    replace_text("in.conf", "FFF", run['fugacity'])
+    os.chdir('../')
+
+print("Run directories have been built")
+
