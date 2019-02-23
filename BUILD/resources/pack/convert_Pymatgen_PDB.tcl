@@ -1,6 +1,6 @@
 #set your file name without ".pdb"
 ###################################
-set filename MMMMMM_clean_min
+set filename MOFNAME_clean_min
 ###################################
 set outfile "$filename\_modified"
 mol load pdb "$filename.pdb"

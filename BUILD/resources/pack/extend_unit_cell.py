@@ -3,12 +3,12 @@ import openbabel
 
 #pymatgen
 structure = Structure.from_file("FILEFILE")
-structure.make_supercell([CCC, YYY, ZZZ])
-structure.to(filename="MMMMMM_CCCXYYYXZZZ.cif")
+structure.make_supercell([XXX, YYY, ZZZ])
+structure.to(filename="MOFNAME_XXXxYYYxZZZ.cif")
 
 #openbabel
 obConversion = openbabel.OBConversion()
 obConversion.SetInAndOutFormats("cif", "pdb")
 mol = openbabel.OBMol()
-obConversion.ReadFile(mol, "MMMMMM_CCCXYYYXZZZ.cif")
-obConversion.WriteFile(mol, 'MMMMMM_clean_min.pdb')
+obConversion.ReadFile(mol, "MOFNAME_XXXxYYYxZZZ.cif")
+obConversion.WriteFile(mol, 'MOFNAME_clean_min.pdb')

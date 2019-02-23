@@ -2,7 +2,7 @@
 ###################################
 set filename FILEFILE_clean_min_modified
 set topology BASEDIR/BUILD/resources/model/TOPFILENAME
-set output   NNNNNN_BOX_0
+set output   MOFNAME_BOX_0
 ###################################
 set infile "$filename.pdb"
 mol load pdb "$filename.pdb"

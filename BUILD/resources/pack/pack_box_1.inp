@@ -1,9 +1,9 @@
 tolerance 3.0
 filetype pdb
 
-output packed_AAAAAA.pdb
+output packed_ADSBNAME.pdb
 
-structure BASEDIR/BUILD/resources/pdb/AAAAAA.pdb
-  number NUM#
+structure BASEDIR/BUILD/resources/pdb/ADSBNAME.pdb
+  number RESVNUM
   inside cube 0.01 0.01 0.01 DDD0
 end structure

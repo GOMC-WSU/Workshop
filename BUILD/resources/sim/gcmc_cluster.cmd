@@ -11,4 +11,4 @@ echo Directory is `pwd`
 
 
 # Run job with 1 processor
-./GOMC_CPU_GCMC +p1 in.conf >& out_NNNNNN_AAAAAA_FFF_bar.log
+./GOMC_CPU_GCMC +p1 in.conf >& out_MOFNAME_ADSBNAME_FFF_bar.log
