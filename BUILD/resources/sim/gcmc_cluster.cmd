@@ -6,9 +6,9 @@ echo Running on host `hostname`
 echo Time is `date`
 
 
-cd PPPPP
+cd RUN-DIR
 echo Directory is `pwd`
 
 
-# Run job
-./GOMC_CPU_GCMC in.conf >& out_NNNNNN_AAAAAA_FFF_bar.log
+# Run job with 1 processor
+./GOMC_CPU_GCMC +p1 in.conf >& out_NNNNNN_AAAAAA_FFF_bar.log

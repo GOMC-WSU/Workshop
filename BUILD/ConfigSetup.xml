@@ -24,25 +24,28 @@
     </steps>
     <rcut>12.0</rcut>
     <lrc>False</lrc>
-    <temperature>300</temperature>
     <electrostatic>False</electrostatic>
     <tolerance>0.0001</tolerance>
     <runs>
         <run>
             <id>1</id>
             <fugacity>0.01</fugacity>
+            <temperature>300</temperature>
         </run>
         <run>
             <id>2</id>
             <fugacity>0.1</fugacity>
+            <temperature>300</temperature>
         </run>
         <run>
             <id>3</id>
             <fugacity>1.0</fugacity>
+            <temperature>300</temperature>
         </run>
         <run>
             <id>4</id>
             <fugacity>10.0</fugacity>
+            <temperature>300</temperature>
         </run>
     </runs>
 </configuration>

@@ -47,14 +47,14 @@ blockfreq = e.find('steps').find('blockfreq').text
 eq_steps = e.find('steps').find('eqsteps').text
 rcut = e.find('rcut').text
 lrc = e.find('lrc').text
-temperature = e.find('temperature').text
 electrostatic = e.find('electrostatic').text
 tolerance = e.find('tolerance').text
 runs = []
 for run in e.find('runs').findall('run'):
     run_id = run.find('id').text
     run_fugacity = run.find('fugacity').text
-    dic = {'id': run_id, 'fugacity': run_fugacity}
+    run_temperature = run.find('temperature').text
+    dic = {'id': run_id, 'fugacity': run_fugacity, 'temperature': run_temperature}
     runs.append(dic)
 
 if electrostatic == 'True':
@@ -122,7 +122,6 @@ print("*** PARAMETERS SUMMARY ***")
 print("MOF_NAME: " + mof_name)
 print("ADSORBATE_NAME: " + adsorbate_name)
 print("MODEL: " + model)
-print("TEMPERATURE: " + temperature)
 print("RUNSTEPS: " + runsteps)
 print("BLOCKFREQ: " + blockfreq)
 print("LRC: " + lrc)
@@ -219,13 +218,14 @@ print(" ")
 print("3.  Setting control file.")
 
 os.chdir("../")
+par_file = "Parameters_" + model + ".par"
+shutil.copyfile(base_directory + "/BUILD/resources/model/" + par_file, "./" + par_file)
 shutil.copyfile(base_directory + "/BUILD/resources/sim/in.conf", "./in.conf")
 replace_text("in.conf", "BASEDIR", base_directory)
 replace_text("in.conf", "AAAAAA", adsorbate_name)
 replace_text("in.conf", "NNNNNN", mof_name)
 replace_text("in.conf", "RCRC", rcut)
 replace_text("in.conf", "LRCO", lrc)
-replace_text("in.conf", "TTT", temperature)
 replace_text("in.conf", "TOLE", tolerance)
 replace_text("in.conf", "FFIELD", model)
 replace_text("in.conf", "EEEE", electrostatic)
@@ -246,7 +246,7 @@ print("4.  Creating run directory for " + mof_name)
 os.chdir('../')
 print("4.1 Total number of runs: " + str(len(runs)))
 for run in runs:
-    print('4.2 Setting up run files for fugacity: ' + run['fugacity'])
+    print('4.2 Building run files: T:' + run['temperature'] + ', fugacity: ' + run['fugacity'])
     current_dir = os.getcwd()
     directory = current_dir + '/run_' + run['fugacity']
     if not os.path.isdir(directory):
@@ -255,11 +255,11 @@ for run in runs:
     shutil.copyfile('../common/in.conf', './in.conf')
     shutil.copyfile(base_directory +'/BUILD/resources/sim/gcmc_cluster.cmd', './gcmc_cluster.cmd')
     shutil.copyfile(base_directory +'/BUILD/resources/sim/GOMC_CPU_GCMC', './GOMC_CPU_GCMC')
-    replace_text("gcmc_cluster.cmd", "PPPPP", directory)
+    replace_text("gcmc_cluster.cmd", "RUN-DIR", directory)
     replace_text("gcmc_cluster.cmd", "NNNNNN", mof_name)
     replace_text("gcmc_cluster.cmd", "AAAAAA", adsorbate_name)
     replace_text("gcmc_cluster.cmd", "FFF", run['fugacity'])
-    replace_text("in.conf", "TTT", temperature)
+    replace_text("in.conf", "TTT", run['temperature'])
     replace_text("in.conf", "FFF", run['fugacity'])
     os.chdir('../')
 
