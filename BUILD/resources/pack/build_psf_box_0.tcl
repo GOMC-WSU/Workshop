@@ -1,7 +1,7 @@
 #set your file name without ".pdb"
 ###################################
-set filename MMMMMM_clean_min_modified
-set topology ../../../BUILD/resources/model/Top_FFIELD.inp
+set filename FILEFILE
+set topology BASEDIR/BUILD/resources/model/Top_FFIELD.inp
 set output   NNNNNN_BOX_0
 ###################################
 set infile "$filename.pdb"

@@ -1,6 +1,6 @@
-psfgen<<ENDMOL
+package require psfgen
 
-topology ../../../BUILD/resources/model/Top_FFIELD.inp
+topology BASEDIR/BUILD/resources/model/Top_FFIELD.inp
 
 segment RRRR {
     pdb packed_AAAAAA.pdb
