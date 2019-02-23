@@ -132,14 +132,14 @@ cp ../../../BUILD/resources/pack/convert_Pymatgen_PDB.tcl .
 cp ../../../BUILD/resources/pack/build_psf_box_0.tcl .
 cp ../../../BUILD/resources/pack/setBeta.tcl .
 cp ../../../BUILD/resources/model/Top_${MODEL}.inp .
-sed -i "s/FILEFILE/${MOF_FILE}/g" extend_unit_cell.py
-sed -i "s/MMMMMM/${MOF_ID}/g" extend_unit_cell.py
-sed -i "s/CCC/${SUPERCELL_X}/g" extend_unit_cell.py
-sed -i "s/YYY/${SUPERCELL_Y}/g" extend_unit_cell.py
-sed -i "s/ZZZ/${SUPERCELL_Z}/g" extend_unit_cell.py
-sed -i "s/MMMMMM/${MOF_ID}/g" *.tcl
-sed -i "s/NNNNNN/${MOF_NAME}/g" *.tcl
-sed -i "s/FFIELD/${MODEL}/g" build_psf_box_0.tcl
+sed -i "" -e  "s/FILEFILE/${MOF_FILE}/g" extend_unit_cell.py
+sed -i "" -e  "s/MMMMMM/${MOF_ID}/g" extend_unit_cell.py
+sed -i "" -e  "s/CCC/${SUPERCELL_X}/g" extend_unit_cell.py
+sed -i "" -e  "s/YYY/${SUPERCELL_Y}/g" extend_unit_cell.py
+sed -i "" -e  "s/ZZZ/${SUPERCELL_Z}/g" extend_unit_cell.py
+sed -i "" -e  "s/MMMMMM/${MOF_ID}/g" *.tcl
+sed -i "" -e  "s/NNNNNN/${MOF_NAME}/g" *.tcl
+sed -i "" -e  "s/FFIELD/${MODEL}/g" build_psf_box_0.tcl
 
 echo "building PDB and PSF files for MOF: Start"
 python extend_unit_cell.py
@@ -188,17 +188,17 @@ cp ../../../BUILD/resources/pack/packmol .
 cp ../../../BUILD/resources/pack/pack_box_1.inp .
 cp ../../../BUILD/resources/pack/build_psf_box_1.tcl .
 
-sed -i "s/AAAAAA/${ADSORBATE_NAME}/g" pack_box_1.inp
-sed -i "s/DDD0/${RESERVOIR_DIM}/g" pack_box_1.inp
-sed -i "s/NUM#/${RESERVOIR_NUMBER}/g" pack_box_1.inp
-sed -i "s/RRRR/${ADSORBATE_RESNAME}/g" build_psf_box_1.tcl
-sed -i "s/AAAAAA/${ADSORBATE_NAME}/g" build_psf_box_1.tcl
-sed -i "s/FFIELD/${MODEL}/g" build_psf_box_1.tcl
+sed -i "" -e  "s/AAAAAA/${ADSORBATE_NAME}/g" pack_box_1.inp
+sed -i "" -e  "s/DDD0/${RESERVOIR_DIM}/g" pack_box_1.inp
+sed -i "" -e  "s/NUM#/${RESERVOIR_NUMBER}/g" pack_box_1.inp
+sed -i "" -e  "s/RRRR/${ADSORBATE_RESNAME}/g" build_psf_box_1.tcl
+sed -i "" -e  "s/AAAAAA/${ADSORBATE_NAME}/g" build_psf_box_1.tcl
+sed -i "" -e  "s/FFIELD/${MODEL}/g" build_psf_box_1.tcl
 
 echo "topology file needed, please paste topology file into reservoir_base directory"
 
 echo "packing reservoir box..."
-./packmol < pack_box_1.inp
+packmol < pack_box_1.inp
 if [ -f packed_* ]; then
 	echo "Reservoir packed succesfully, proceeding..."
 else
@@ -222,23 +222,23 @@ echo "configuring control file..."
 echo ==================================
 cd ../
 cp ../../BUILD/resources/sim/in.conf .
-sed -i "s/AAAAAA/${ADSORBATE_NAME}/g" in.conf
-sed -i "s/NNNNNN/${MOF_NAME}/g" in.conf
-sed -i "s/RCRC/${RCUT}/g" in.conf
-sed -i "s/LRCO/${LRC}/g" in.conf
-sed -i "s/TTT/${TEMPERATURE}/g" in.conf
-sed -i "s/TOLE/${TOLERANCE}/g" in.conf
-sed -i "s/FFIELD/${MODEL}/g" in.conf
-sed -i "s/EEEE/${ELECTROSTATIC}/g" in.conf
-sed -i "s/SSSSSSSS/${RUNSTEPS}/g" in.conf
-sed -i "s/DDD0/${RESERVOIR_DIM}/g" in.conf
-sed -i "s/DDD1/${BOX_0_VECTOR1}/g" in.conf
-sed -i "s/DDD2/${BOX_0_VECTOR2}/g" in.conf
-sed -i "s/DDD3/${BOX_0_VECTOR3}/g" in.conf
-sed -i "s/RRRR/${ADSORBATE_RESNAME}/g" in.conf
-sed -i "s/COORDSTEPS/${COORD_RESTART}/g" in.conf
-sed -i "s/CONSSTEPS/${CONSOLE_BLOCKAVG}/g" in.conf
-sed -i "s/EQUILSTEPS/${EQSTEPS}/g" in.conf
+sed -i "" -e  "s/AAAAAA/${ADSORBATE_NAME}/g" in.conf
+sed -i "" -e  "s/NNNNNN/${MOF_NAME}/g" in.conf
+sed -i "" -e  "s/RCRC/${RCUT}/g" in.conf
+sed -i "" -e  "s/LRCO/${LRC}/g" in.conf
+sed -i "" -e  "s/TTT/${TEMPERATURE}/g" in.conf
+sed -i "" -e  "s/TOLE/${TOLERANCE}/g" in.conf
+sed -i "" -e  "s/FFIELD/${MODEL}/g" in.conf
+sed -i "" -e  "s/EEEE/${ELECTROSTATIC}/g" in.conf
+sed -i "" -e  "s/SSSSSSSS/${RUNSTEPS}/g" in.conf
+sed -i "" -e  "s/DDD0/${RESERVOIR_DIM}/g" in.conf
+sed -i "" -e  "s/DDD1/${BOX_0_VECTOR1}/g" in.conf
+sed -i "" -e  "s/DDD2/${BOX_0_VECTOR2}/g" in.conf
+sed -i "" -e  "s/DDD3/${BOX_0_VECTOR3}/g" in.conf
+sed -i "" -e  "s/RRRR/${ADSORBATE_RESNAME}/g" in.conf
+sed -i "" -e  "s/COORDSTEPS/${COORD_RESTART}/g" in.conf
+sed -i "" -e  "s/CONSSTEPS/${CONSOLE_BLOCKAVG}/g" in.conf
+sed -i "" -e  "s/EQUILSTEPS/${EQSTEPS}/g" in.conf
 echo "control file has been properly configured, now beginning runs setup"
 
 #################################
@@ -260,12 +260,12 @@ until [ ${RUN_ID} -gt ${RUN_TOTAL} ]; do
 	cd "Run_${RUN_FUGACITY[$RUN_ID - 1]}"
 	cp ../Common/in.conf .
 	cp ../../BUILD/resources/sim/gcmc_cluster.cmd .
-	sed -i "s@PPPPP@${COMMAND_PATH}@g" gcmc_cluster.cmd
-	sed -i "s/NNNNNN/$MOF_NAME/g" gcmc_cluster.cmd
-	sed -i "s/AAAAAA/$ADSORBATE_NAME/g" gcmc_cluster.cmd
-	sed -i "s/FFF/$FUGACITY/g" gcmc_cluster.cmd
-	sed -i "s/TTT/${TEMPERATURE}/g" in.conf
-	sed -i "s/FFF/${FUGACITY}/g" in.conf
+	sed -i "" -e  "s@PPPPP@${COMMAND_PATH}@g" gcmc_cluster.cmd
+	sed -i "" -e  "s/NNNNNN/$MOF_NAME/g" gcmc_cluster.cmd
+	sed -i "" -e  "s/AAAAAA/$ADSORBATE_NAME/g" gcmc_cluster.cmd
+	sed -i "" -e  "s/FFF/$FUGACITY/g" gcmc_cluster.cmd
+	sed -i "" -e  "s/TTT/${TEMPERATURE}/g" in.conf
+	sed -i "" -e  "s/FFF/${FUGACITY}/g" in.conf
 	cp ../../BUILD/resources/sim/GOMC_CPU_GCMC .
 	echo "run $RUN_ID has been set up, proceeding to next run"
 	cd ../
