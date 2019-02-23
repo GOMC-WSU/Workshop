@@ -6,6 +6,7 @@ import shutil
 import re
 import math
 import glob
+import fnmatch
 
 base_directory = os.path.dirname(os.path.realpath(__file__))
 config_file = base_directory + '/BUILD/ConfigSetup.xml'
@@ -25,6 +26,12 @@ def FindParameter(filename, keyword):
             if line.startswith(keyword):
                 line = re.sub(' +', ' ', line).strip()
                 return line.split(' ')[1]
+
+# clean all files except the file pattern
+def CleanDir(filepattern):
+    for file in os.listdir('.'):
+        if not fnmatch.fnmatch(file, filepattern):
+            os.remove(file)
 
 # Read input file and initialize variables
 print("================================================================================")
@@ -161,7 +168,8 @@ os.system('python extend_unit_cell.py' + '> build.log 2>&1')
 if os.path.isfile(mof_name + "_clean_min.pdb"):
     print("1.2 Unit cell extended, proceeding to next step")
 else:
-    print("1.2 ERROR: error generating supercell, check extend_unit_cell.py file and check if Pymatgen and Openbabel are installed correctly")
+    print("1.2 ERROR: error generating supercell, check extend_unit_cell.py file.") 
+    print("    Check if Pymatgen and Openbabel are installed correctly.")
     sys.exit(-1)
 
 os.system("vmd -dispdev text < convert_Pymatgen_PDB.tcl" + '> build.log 2>&1')
@@ -178,6 +186,9 @@ if len(glob.glob(mof_name + "_BOX_0.psf")) != 0:
 else:
     print("1.4 ERROR: Generating MOF psf file was unsuccessful, exiting...")
     sys.exit(-1)
+
+print("1.5 Cleaning MOF-base directory")
+CleanDir(mof_name + "_BOX*")
 
 print(" ")
 print("2.  Generating reservoir files.")
@@ -210,8 +221,11 @@ os.system("vmd -dispdev text < build_psf_box_1.tcl" + '> build.log 2>&1')
 if len(glob.glob("*.psf")) != 0:
     print("2.2 Reservoir psf and pdb files generated succesfully")
 else:
-    print("2.2ERROR: psf generation for reservoir unsuccesful, exiting...")
+    print("2.2 ERROR: psf generation for reservoir unsuccesful, exiting...")
     sys.exit(-1)
+
+print("2.3 Cleaning reservoir directory")
+CleanDir("START_BOX_1*")
 
 print("*** MOF PDB and PSF input files succesfully built ***")
 print(" ")
@@ -263,6 +277,8 @@ for run in runs:
     replace_text("in.conf", "FFF", run['fugacity'])
     os.chdir('../')
 
+# delete in.conf after finished copying
+os.remove("./common/in.conf")
 print("END: Run directories have been built")
 print("================================================================================")
 
