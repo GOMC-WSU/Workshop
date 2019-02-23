@@ -27,7 +27,7 @@ def FindParameter(filename, keyword):
                 line = re.sub(' +', ' ', line).strip()
                 return line.split(' ')[1]
 
-# clean all files except the file pattern
+# clean all files except the ones with filepattern
 def CleanDir(filepattern):
     for file in os.listdir('.'):
         if not fnmatch.fnmatch(file, filepattern):
@@ -64,12 +64,14 @@ for run in e.find('runs').findall('run'):
     dic = {'id': run_id, 'fugacity': run_fugacity, 'temperature': run_temperature}
     runs.append(dic)
 
-if electrostatic == 'True':
+if electrostatic.lower() == 'true':
     mof_path = base_directory + '/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures_with_DDEC_charges/' + mof_file
     top_model_input = "Top_" + model + "charges.inp"
-elif electrostatic == 'False':
+elif electrostatic.lower() == 'false':
     mof_path = base_directory + '/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures/' + mof_file
     top_model_input = "Top_" + model + ".inp"
+    print("WARNING:Current toplogy file is not designed for simulating polar molecules.")
+    print("WARNING: You need to modify the topology file for desire MOF.")
 else:
     print("ERROR: ELECTROSTATIC INPUT INVALID")
     print("EXITING...")
@@ -150,6 +152,7 @@ shutil.copyfile(base_directory + "/BUILD/resources/pack/convert_Pymatgen_PDB.tcl
 shutil.copyfile(base_directory + "/BUILD/resources/pack/build_psf_box_0.tcl", "./build_psf_box_0.tcl")
 shutil.copyfile(base_directory + "/BUILD/resources/pack/setBeta.tcl", "./setBeta.tcl")
 shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_model_input, "./" + top_model_input)
+
 replace_text("extend_unit_cell.py", 'FILEFILE', mof_file)
 replace_text("extend_unit_cell.py", 'MOFNAME', mof_name)
 replace_text("extend_unit_cell.py", 'XXX', str(supercelldim_x))
@@ -235,6 +238,7 @@ os.chdir("../")
 par_file = "Parameters_" + model + ".par"
 shutil.copyfile(base_directory + "/BUILD/resources/model/" + par_file, "./" + par_file)
 shutil.copyfile(base_directory + "/BUILD/resources/sim/in.conf", "./in.conf")
+
 replace_text("in.conf", "BASEDIR", base_directory)
 replace_text("in.conf", "ADSBNAME", adsorbate_name)
 replace_text("in.conf", "MOFNAME", mof_name)

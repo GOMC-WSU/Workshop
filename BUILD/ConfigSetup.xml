@@ -25,7 +25,7 @@
     <rcut>12.0</rcut>
     <lrc>False</lrc>
     <electrostatic>False</electrostatic>
-    <tolerance>0.0001</tolerance>
+    <tolerance>0.00001</tolerance>
     <runs>
         <run>
             <id>1</id>
