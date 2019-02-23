@@ -57,8 +57,10 @@ for run in e.find('runs').findall('run'):
 
 if electrostatic == 'True':
     mof_path = base_directory + '/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures_with_DDEC_charges/' + mof_file
+    top_model_input = "Top_" + model + "charges.inp"
 elif electrostatic == 'False':
     mof_path = base_directory + '/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures/' + mof_file
+    top_model_input = "Top_" + model + ".inp"
 else:
     print("ERROR: ELECTROSTATIC INPUT INVALID")
     print("EXITING...")
@@ -142,17 +144,16 @@ shutil.copyfile(base_directory + "/BUILD/resources/pack/extend_unit_cell.py", ".
 shutil.copyfile(base_directory + "/BUILD/resources/pack/convert_Pymatgen_PDB.tcl", "./convert_Pymatgen_PDB.tcl")
 shutil.copyfile(base_directory + "/BUILD/resources/pack/build_psf_box_0.tcl", "./build_psf_box_0.tcl")
 shutil.copyfile(base_directory + "/BUILD/resources/pack/setBeta.tcl", "./setBeta.tcl")
-top_model_input = "Top_" + model + ".inp"
 shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_model_input, "./" + top_model_input)
 replace_text("extend_unit_cell.py", 'FILEFILE', mof_file)
-replace_text("build_psf_box_0.tcl", 'FILEFILE', mof_file)
 replace_text("extend_unit_cell.py", 'MMMMMM', mof_name)
 replace_text("extend_unit_cell.py", 'CCC', str(supercelldim_x))
 replace_text("extend_unit_cell.py", 'YYY', str(supercelldim_y))
 replace_text("extend_unit_cell.py", 'ZZZ', str(supercelldim_z))
+replace_text("build_psf_box_0.tcl", 'FILEFILE', mof_name)
 replace_text('build_psf_box_0.tcl', 'NNNNNN', mof_name)
 replace_text('build_psf_box_0.tcl', 'BASEDIR', base_directory)
-replace_text('build_psf_box_0.tcl', 'FFIELD', model)
+replace_text('build_psf_box_0.tcl', 'TOPFILENAME', top_model_input)
 replace_text('setBeta.tcl', 'NNNNNN', mof_name)
 replace_text('convert_Pymatgen_PDB.tcl', 'MMMMMM', mof_name)
 
@@ -174,7 +175,7 @@ else:
 
 os.system("vmd -dispdev text < build_psf_box_0.tcl")
 os.system("vmd -dispdev text < setBeta.tcl")
-if len(glob.glob("*.psf")) != 0:
+if len(glob.glob(mof_name + "_BOX_0.psf")) != 0:
     print("MOF psf and pdb files generated; proceeding to next step")
 else:
     print("ERROR: Generating MOF psf file was unsuccessful, exiting...")
@@ -198,7 +199,7 @@ replace_text('pack_box_1.inp', 'NUM#', reservoir_number)
 replace_text('build_psf_box_1.tcl', 'BASEDIR', base_directory)
 replace_text('build_psf_box_1.tcl', 'RRRR', adsorbate_resname)
 replace_text('build_psf_box_1.tcl', 'AAAAAA', adsorbate_name)
-replace_text('build_psf_box_1.tcl', 'FFIELD', model)
+replace_text('build_psf_box_1.tcl', 'TOPFILENAME', top_model_input)
 
 print("Packing reservoir box...")
 os.system("packmol < pack_box_1.inp")

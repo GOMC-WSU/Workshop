@@ -1,6 +1,6 @@
 package require psfgen
 
-topology BASEDIR/BUILD/resources/model/Top_FFIELD.inp
+topology BASEDIR/BUILD/resources/model/TOPFILENAME
 
 segment RRRR {
     pdb packed_AAAAAA.pdb
