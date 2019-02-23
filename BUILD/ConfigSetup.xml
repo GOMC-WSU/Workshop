@@ -1,32 +1,49 @@
 <configuration>
-    <mof>
-        <file>EDUSIF_clean_min.cif</file>
-    </mof>
+    <HTS>false</HTS> <!-- Activate the High Throughput Screening -->
+
+    <mofname>IBICAZ_clean_min.cif</mofname> <!-- Must be defined in building only one MOF system -->
+    
+    <model>Universal</model> <!-- Topology and Paramter Keyword. -->
+
+    <rcut>12.0</rcut> <!-- Cutoff value -->
+
+    <lrc>False</lrc> <!-- Long range correction activation -->
+
+    <electrostatic>False</electrostatic> <!-- Ewald summation acctivation -->
+
+    <tolerance>0.00001</tolerance> <!-- Tolerance value for Ewald summation -->
+
     <supercelldim>
+        <!-- Extending unit cell in X, Y, Z direction -->
         <x>2</x>
         <y>2</y>
         <z>2</z>
     </supercelldim>
+
     <adsorbate>
+        <!-- Defining the name and residue name of adsorbate -->
         <name>argon</name>
         <resname>AR</resname>
     </adsorbate>
+
     <reservoir>
+        <!-- Number of molecule in reservor with givven dimension -->
         <dim>60</dim>
         <number>1000</number>
     </reservoir>
-    <model>Universal</model>
+
+
     <steps>
+        <!-- System run steps-->
         <runsteps>10000000</runsteps>
         <eqsteps>2000000</eqsteps>
         <coordfreq>1000000</coordfreq>
         <blockfreq>100000</blockfreq>
     </steps>
-    <rcut>12.0</rcut>
-    <lrc>False</lrc>
-    <electrostatic>False</electrostatic>
-    <tolerance>0.00001</tolerance>
+
     <runs>
+        <!-- Simulation id, temperature and fugacity for each run -->
+        <!-- You can add or delete runs -->
         <run>
             <id>1</id>
             <fugacity>0.01</fugacity>
@@ -48,4 +65,5 @@
             <temperature>300</temperature>
         </run>
     </runs>
+
 </configuration>
