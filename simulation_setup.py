@@ -27,6 +27,8 @@ def FindParameter(filename, keyword):
                 return line.split(' ')[1]
 
 # Read input file and initialize variables
+print("================================================================================")
+print("*** Reading XML file ***")
 e = et.parse(config_file).getroot()
 mof_file = e.find('mof').find('file').text
 mof_name = mof_file.split('_')[0]
@@ -71,7 +73,7 @@ if not os.path.isfile(mof_path):
     sys.exit(-1)
 
 # Create Build Directories
-print("Setting up directories")
+print("*** Working on MOF: " + mof_name + " ***")
 if not os.path.isdir('run_files'):
     os.mkdir("run_files")
 os.chdir("run_files")
@@ -116,30 +118,27 @@ box_0_vector1 = "%.6f %.6f %.6f" % (ax, ay, az)
 box_0_vector2 = "%.6f %.6f %.6f" % (bx, by, bz)
 box_0_vector3 = "%.6f %.6f %.6f" % (cx, cy, cz)
 
-print(" ")
-print(" - READING SETUP PARAMETERS - ")
-print("==========================================")
-print("")
+print("*** PARAMETERS SUMMARY ***")
 print("MOF_NAME: " + mof_name)
 print("ADSORBATE_NAME: " + adsorbate_name)
+print("MODEL: " + model)
+print("TEMPERATURE: " + temperature)
+print("RUNSTEPS: " + runsteps)
+print("BLOCKFREQ: " + blockfreq)
+print("LRC: " + lrc)
+print("RCUT: " + rcut)
 print("ELECTROSTATIC: " + electrostatic)
 print("TOLERANCE: " + tolerance)
-print("LRC: " + lrc)
-print("TEMPERATURE: " + temperature)
-print("MODEL: " + model)
 print("RESERVOIR_DIM: " + reservoir_dim)
 print("RESERVOIR_NUMBER: " + reservoir_number)
-print("RCUT: " + rcut)
-print("RUNSTEPS: " + runsteps)
-print("SUPERCELL_EXPANSION_FACTOR: %.6f %.6f %.6f" % (supercelldim_x, supercelldim_y, supercelldim_z))
-print(" ")
-print("Cell Basis Vectors:")
-print(box_0_vector1)
-print(box_0_vector2)
-print(box_0_vector3)
+print("SUPERCELL_EXPANSION_FACTOR: %d x %d x %d" % (supercelldim_x, supercelldim_y, supercelldim_z))
+print("CELL BASIS VECTOR 0: " + box_0_vector1)
+print("CELL BASIS VECTOR 1: " + box_0_vector2)
+print("CELL BASIS VECTOR 2: " + box_0_vector3)
+print("================================================================================")
 
 # Create MOF Base
-print("Creating MOF base")
+print("1.  Creating MOF base")
 shutil.copyfile(base_directory + "/BUILD/resources/pack/extend_unit_cell.py", "./extend_unit_cell.py")
 shutil.copyfile(base_directory + "/BUILD/resources/pack/convert_Pymatgen_PDB.tcl", "./convert_Pymatgen_PDB.tcl")
 shutil.copyfile(base_directory + "/BUILD/resources/pack/build_psf_box_0.tcl", "./build_psf_box_0.tcl")
@@ -157,34 +156,32 @@ replace_text('build_psf_box_0.tcl', 'TOPFILENAME', top_model_input)
 replace_text('setBeta.tcl', 'NNNNNN', mof_name)
 replace_text('convert_Pymatgen_PDB.tcl', 'MMMMMM', mof_name)
 
-print("Building PDB and PSF files for MOF:")
-os.system('python extend_unit_cell.py')
+print("1.1 Building PDB and PSF files for MOF:")
+os.system('python extend_unit_cell.py' + '> build.log 2>&1')
 
 if os.path.isfile(mof_name + "_clean_min.pdb"):
-    print("unit cell extended, proceeding to next step")
+    print("1.2 Unit cell extended, proceeding to next step")
 else:
-    print("ERROR: error generating supercell, check extend_unit_cell.py file and check if Pymatgen and Openbabel are installed correctly")
+    print("1.2 ERROR: error generating supercell, check extend_unit_cell.py file and check if Pymatgen and Openbabel are installed correctly")
     sys.exit(-1)
 
-os.system("vmd -dispdev text < convert_Pymatgen_PDB.tcl")
+os.system("vmd -dispdev text < convert_Pymatgen_PDB.tcl" + '> build.log 2>&1')
 if len(glob.glob("*_modified.pdb")) != 0:
-    print("pdb file modification complete, proceeding to next step")
+    print("1.3 PDB file modification complete, proceeding to next step")
 else:
-    print("ERROR: error in generating pdb file after running Pymatgen")
+    print("1.3 ERROR: error in generating pdb file after running Pymatgen")
     sys.exit(-1)
 
-os.system("vmd -dispdev text < build_psf_box_0.tcl")
-os.system("vmd -dispdev text < setBeta.tcl")
+os.system("vmd -dispdev text < build_psf_box_0.tcl" + '> build.log 2>&1')
+os.system("vmd -dispdev text < setBeta.tcl" + '> build.log 2>&1')
 if len(glob.glob(mof_name + "_BOX_0.psf")) != 0:
-    print("MOF psf and pdb files generated; proceeding to next step")
+    print("1.4 MOF PSF and PDB files generated; proceeding to next step")
 else:
-    print("ERROR: Generating MOF psf file was unsuccessful, exiting...")
+    print("1.4 ERROR: Generating MOF psf file was unsuccessful, exiting...")
     sys.exit(-1)
 
-print("================================================")
-print("MOF pdb and psf input files succesfully built")
-print("now proceeding to generate reservoir files")
-print("================================================")
+print(" ")
+print("2.  Generating reservoir files.")
 
 # Create Reservoir Base
 os.chdir('../reservoir')
@@ -201,24 +198,26 @@ replace_text('build_psf_box_1.tcl', 'RRRR', adsorbate_resname)
 replace_text('build_psf_box_1.tcl', 'AAAAAA', adsorbate_name)
 replace_text('build_psf_box_1.tcl', 'TOPFILENAME', top_model_input)
 
-print("Packing reservoir box...")
-os.system("packmol < pack_box_1.inp")
+print("2.1 Packing reservoir box.")
+os.system("packmol < pack_box_1.inp" + '> build.log 2>&1')
 if len(glob.glob("packed_*")) != 0:
-    print("Reservoir packed succesfully, proceeding...")
+    print("2.1 Reservoir packed succesfully, proceeding...")
 else:
-    print("ERROR: Packing reservoir unsuccesful, exiting...")
+    print("2.1 ERROR: Packing reservoir unsuccesful, exiting...")
     sys.exit(-1)
 
-os.system("vmd -dispdev text < build_psf_box_1.tcl")
+print("2.2 Building pdb and psf file for reservoir box.")
+os.system("vmd -dispdev text < build_psf_box_1.tcl" + '> build.log 2>&1')
 if len(glob.glob("*.psf")) != 0:
-    print("Reservoir psf and pdb files generated succesfully")
+    print("2.2 Reservoir psf and pdb files generated succesfully")
 else:
-    print("ERROR: psf generation for reservoir unsuccesful, exiting...")
+    print("2.2ERROR: psf generation for reservoir unsuccesful, exiting...")
     sys.exit(-1)
 
-print("==================================")
-print("configuring control file...")
-print("==================================")
+print("*** MOF PDB and PSF input files succesfully built ***")
+print(" ")
+print("3.  Setting control file.")
+
 os.chdir("../")
 shutil.copyfile(base_directory + "/BUILD/resources/sim/in.conf", "./in.conf")
 replace_text("in.conf", "BASEDIR", base_directory)
@@ -239,13 +238,15 @@ replace_text("in.conf", "RRRR", adsorbate_resname)
 replace_text("in.conf", "COORDSTEPS", coordfreq)
 replace_text("in.conf", "CONSSTEPS", blockfreq)
 replace_text("in.conf", "EQUILSTEPS", eq_steps)
-print("Control file has been properly configured, now beginning runs setup")
+
+print(" ")
+print("4.  Creating run directory for " + mof_name)
 
 # Generating runs for each fugacity
 os.chdir('../')
-print("Total number of runs: " + str(len(runs)))
+print("4.1 Total number of runs: " + str(len(runs)))
 for run in runs:
-    print('Setting up run files for fugacity ' + run['fugacity'])
+    print('4.2 Setting up run files for fugacity: ' + run['fugacity'])
     current_dir = os.getcwd()
     directory = current_dir + '/run_' + run['fugacity']
     if not os.path.isdir(directory):
@@ -262,5 +263,6 @@ for run in runs:
     replace_text("in.conf", "FFF", run['fugacity'])
     os.chdir('../')
 
-print("Run directories have been built")
+print("END: Run directories have been built")
+print("================================================================================")
 
