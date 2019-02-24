@@ -1,7 +1,7 @@
 <configuration>
     <HTS>false</HTS> <!-- Activate the High Throughput Screening -->
 
-    <mofname>IBICAZ_clean_min.cif</mofname> <!-- Must be defined in building only one MOF system -->
+    <mofname>EDUSIF_clean_min.cif</mofname> <!-- Must be defined in building only one MOF system -->
     
     <model>Universal</model> <!-- Topology and Paramter Keyword. -->
 

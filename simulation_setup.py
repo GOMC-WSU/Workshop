@@ -21,11 +21,22 @@ def replace_text(filename, text_to_search, replacement_text):
         file.write(filedata)
 
 def FindParameter(filename, keyword):
+    '''This function will find the keyword in the <filename> and
+    return the second value'''
     with open(filename, 'r') as file:
         for line in file:
             if line.startswith(keyword):
                 line = re.sub(' +', ' ', line).strip()
                 return line.split(' ')[1]
+
+def replace_textWithFile(filename, text_to_search, replacement_file):
+    '''This function will replace <text_to_search> text with
+    <replacement_file> file in <filename>'''
+    with open(replacement_file, 'r') as file:
+        for line in file:
+            replace_text(filename, text_to_search, line + text_to_search)
+
+    replace_text(filename, text_to_search, '')
 
 # clean all files except the ones with filepattern
 def CleanDir(filepattern):
@@ -254,6 +265,7 @@ for cifFile in allFiles:
     print(" ")
     print("3.  Setting control file.")
 
+    # we are in common directory
     os.chdir("../")
     par_file = "Parameters_" + model + ".par"
     shutil.copyfile(base_directory + "/BUILD/resources/model/" + par_file, "./" + par_file)
@@ -276,6 +288,7 @@ for cifFile in allFiles:
     replace_text("in.conf", "COORDSTEPS", coordfreq)
     replace_text("in.conf", "CONSSTEPS", blockfreq)
     replace_text("in.conf", "EQSTEPSET", eq_steps)
+    replace_textWithFile("in.conf", "BASEFUGACITY", "fugacity.txt")
 
     print(" ")
     print("4.  Creating run directory for " + mof_name)
@@ -301,8 +314,9 @@ for cifFile in allFiles:
         replace_text("in.conf", "FFF", run['fugacity'])
         os.chdir('../')
 
-    # delete in.conf after finished copying
+    # delete in.conf and list of residue after finished copying
     os.remove("./common/in.conf")
+    os.remove("./common/fugacity.txt")
     print("END: Run directories have been built")
     print("================================================================================")
     os.chdir(base_directory)

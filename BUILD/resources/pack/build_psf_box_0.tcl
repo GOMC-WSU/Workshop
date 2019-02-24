@@ -57,6 +57,15 @@ for {set i 0} {$i < $molsize} {incr i} {
 }
 
 ###################################################
+# print all residue in file to a fugacity.text in common directory
+# We need it for in.conf to set fugacity of base to zero
+set outputFile [open ../fugacity.txt w]
+for {set i 0} {$i < $molsize} {incr i} {
+    set thisName [lindex $nameArr $i]
+    puts $outputFile [format {%s%8s%8s} "Fugacity" $thisName  "0.0"]
+}
+close $outputFile
+###################################################
 # make segment
 package require psfgen
 resetpsf 
@@ -86,3 +95,4 @@ for {set i 0} {$i < $molsize} {incr i} {
     set thisName [lindex $nameArr $i]
     file delete "$thisName.pdb"
 }
+
