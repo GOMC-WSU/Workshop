@@ -199,10 +199,10 @@ for cifFile in allFiles:
     print("1.1 Building PDB and PSF files for MOF:")
     os.system('python extend_unit_cell.py' + '>> build.log 2>&1')
 
-    if os.path.isfile(mof_name + "_clean_min.pdb"):
+    if os.path.isfile(mof_name + "_clean_min.xyz"):
         print("1.2 Unit cell extended, proceeding to next step")
     else:
-        print("1.2 ERROR: error generating supercell, check extend_unit_cell.py file.") 
+        print("1.2 ERROR: error generating supercell XYZ file.") 
         print("    Check if Pymatgen and Openbabel are installed correctly.")
         sys.exit(-1)
 

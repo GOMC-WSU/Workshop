@@ -1,9 +1,9 @@
-#set your file name without ".pdb"
+#set your file name without ".xyz"
 ###################################
 set filename MOFNAME_clean_min
 ###################################
 set outfile "$filename\_modified"
-mol load pdb "$filename.pdb"
+mol load xyz "$filename.xyz"
 
 set all [atomselect top all]
 lappend indexArr [$all get index]
