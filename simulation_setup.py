@@ -34,7 +34,7 @@ def replace_textWithFile(filename, text_to_search, replacement_file):
     <replacement_file> file in <filename>'''
     with open(replacement_file, 'r') as file:
         for line in file:
-            replace_text(filename, text_to_search, line + text_to_search)
+            replace_text(filename, text_to_search, line.upper() + text_to_search)
 
     replace_text(filename, text_to_search, '')
 
@@ -55,7 +55,6 @@ supercelldim_x = float(e.find('supercelldim').find('x').text)
 supercelldim_y = float(e.find('supercelldim').find('y').text)
 supercelldim_z = float(e.find('supercelldim').find('z').text)
 adsorbate_name = e.find('adsorbate').find('name').text
-adsorbate_file = adsorbate_name + '.pdb'
 adsorbate_resname = e.find('adsorbate').find('resname').text
 reservoir_dim = e.find('reservoir').find('dim').text
 reservoir_number = e.find('reservoir').find('number').text
@@ -78,9 +77,7 @@ for run in e.find('runs').findall('run'):
 
 if electrostatic.lower() == 'true':
     mof_dir = base_directory + '/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures_with_DDEC_charges/'
-    top_model_input = "Top_" + model + "charges.inp"
-    print("WARNING:Current toplogy file is not designed for simulating polar molecules.")
-    print("        You need to modify the topology file for desire MOF.")
+    top_model_input = "Top_" + model + "_charges.inp"
 elif electrostatic.lower() == 'false':
     mof_dir = base_directory + '/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures/'
     top_model_input = "Top_" + model + ".inp"
@@ -177,13 +174,16 @@ for cifFile in allFiles:
     print("================================================================================")
 
     # Create MOF Base
-    print("1.  Creating MOF base")
+    print("1.  Building MOF files")
     shutil.copyfile(base_directory + "/BUILD/resources/pack/extend_unit_cell.py", "./extend_unit_cell.py")
     shutil.copyfile(base_directory + "/BUILD/resources/pack/convert_Pymatgen_PDB.tcl", "./convert_Pymatgen_PDB.tcl")
     shutil.copyfile(base_directory + "/BUILD/resources/pack/build_psf_box_0.tcl", "./build_psf_box_0.tcl")
     shutil.copyfile(base_directory + "/BUILD/resources/pack/setBeta.tcl", "./setBeta.tcl")
+    shutil.copyfile(base_directory + "/BUILD/resources/model/top_generator.py", "./top_generator.py")
     shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_model_input, "./" + top_model_input)
 
+    replace_text("top_generator.py", 'MOF-FILENAME', mof_file)
+    replace_text("top_generator.py", 'TOP-FILENAME', top_model_input)
     replace_text("extend_unit_cell.py", 'FILEFILE', mof_file)
     replace_text("extend_unit_cell.py", 'MOFNAME', mof_name)
     replace_text("extend_unit_cell.py", 'XXX', str(supercelldim_x))
@@ -191,37 +191,42 @@ for cifFile in allFiles:
     replace_text("extend_unit_cell.py", 'ZZZ', str(supercelldim_z))
     replace_text("build_psf_box_0.tcl", 'FILEFILE', mof_name)
     replace_text('build_psf_box_0.tcl', 'MOFNAME', mof_name)
-    replace_text('build_psf_box_0.tcl', 'BASEDIR', base_directory)
+    #replace_text('build_psf_box_0.tcl', 'BASEDIR', base_directory)
     replace_text('build_psf_box_0.tcl', 'TOPFILENAME', top_model_input)
     replace_text('setBeta.tcl', 'MOFNAME', mof_name)
     replace_text('convert_Pymatgen_PDB.tcl', 'MOFNAME', mof_name)
 
-    print("1.1 Building PDB and PSF files for MOF:")
+    print("1.1 Generating Topology file for MOF.")
+    os.system('python top_generator.py' + '>> build.log 2>&1')
+
+    print("1.2 Extending unit cell and generating XYZ file for MOF.")
     os.system('python extend_unit_cell.py' + '>> build.log 2>&1')
 
     if os.path.isfile(mof_name + "_clean_min.xyz"):
-        print("1.2 Unit cell extended, proceeding to next step")
+        print("1.3 Unit cell extended and XYZ file generated successfully.")
     else:
-        print("1.2 ERROR: error generating supercell XYZ file.") 
+        print("1.3 ERROR: error generating supercell XYZ file.") 
         print("    Check if Pymatgen and Openbabel are installed correctly.")
         sys.exit(-1)
 
+    print("1.4 Converting XYZ file to formatted PDB for MOF.")
     os.system("vmd -dispdev text < convert_Pymatgen_PDB.tcl" + '>> build.log 2>&1')
     if len(glob.glob("*_modified.pdb")) != 0:
-        print("1.3 PDB file modification complete, proceeding to next step")
+        print("1.5 PDB file formatting completed successfully")
     else:
-        print("1.3 ERROR: error in generating pdb file after running Pymatgen")
+        print("1.5 ERROR: In generating formatted PDB file in convert_Pymatgen_PDB.tcl script.")
         sys.exit(-1)
 
+    print("1.6 Generating PSF file for MOF.")
     os.system("vmd -dispdev text < build_psf_box_0.tcl" + '>> build.log 2>&1')
     os.system("vmd -dispdev text < setBeta.tcl" + '>> build.log 2>&1')
     if len(glob.glob(mof_name + "_BOX_0.psf")) != 0:
-        print("1.4 MOF PSF and PDB files generated; proceeding to next step")
+        print("1.7 MOF PSF and PDB files generated successfully.")
     else:
-        print("1.4 ERROR: Generating MOF psf file was unsuccessful, exiting...")
+        print("1.7 ERROR: In generating MOF PSF file in build_psf_box_0.tcl file.")
         sys.exit(-1)
 
-    print("1.5 Cleaning MOF-base directory")
+    print("1.8 Cleaning MOF-base directory")
     CleanDir(mof_name + "_BOX*")
 
     print(" ")
@@ -229,9 +234,9 @@ for cifFile in allFiles:
 
     # Create Reservoir Base
     os.chdir('../reservoir')
-    shutil.copyfile(base_directory + '/BUILD/resources/pdb/' + adsorbate_file, './' + adsorbate_file)
     shutil.copyfile(base_directory + '/BUILD/resources/pack/pack_box_1.inp', './pack_box_1.inp')
     shutil.copyfile(base_directory + '/BUILD/resources/pack/build_psf_box_1.tcl', './build_psf_box_1.tcl')
+    shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_model_input, "./" + top_model_input)
 
     replace_text('pack_box_1.inp', 'ADSBNAME', adsorbate_name)
     replace_text('pack_box_1.inp', 'BASEDIR', base_directory)
@@ -245,20 +250,20 @@ for cifFile in allFiles:
     print("2.1 Packing reservoir box.")
     os.system("packmol < pack_box_1.inp" + '>> build.log 2>&1')
     if len(glob.glob("packed_*")) != 0:
-        print("2.1 Reservoir packed succesfully, proceeding...")
+        print("2.1 Reservoir packed succesfully.")
     else:
-        print("2.1 ERROR: Packing reservoir unsuccesful, exiting...")
+        print("2.1 ERROR: Packing reservoir was unsuccesful.")
         sys.exit(-1)
 
-    print("2.2 Building pdb and psf file for reservoir box.")
+    print("2.2 Building PDB and PSF file for reservoir box.")
     os.system("vmd -dispdev text < build_psf_box_1.tcl" + '>> build.log 2>&1')
     if len(glob.glob("*.psf")) != 0:
-        print("2.2 Reservoir psf and pdb files generated succesfully")
+        print("2.2 Reservoir PDB and PSF files generated succesfully.")
     else:
-        print("2.2 ERROR: psf generation for reservoir unsuccesful, exiting...")
+        print("2.2 ERROR: PSF generation for reservoir was unsuccesful.")
         sys.exit(-1)
 
-    print("2.3 Cleaning reservoir directory")
+    print("2.3 Cleaning reservoir directory.")
     CleanDir("START_BOX_1*")
 
     print("*** MOF PDB and PSF input files succesfully built ***")

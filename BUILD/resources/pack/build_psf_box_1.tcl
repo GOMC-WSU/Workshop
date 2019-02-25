@@ -1,6 +1,6 @@
 package require psfgen
 
-topology BASEDIR/BUILD/resources/model/TOPFILENAME
+topology ./TOPFILENAME
 
 segment ADSBSET {
     pdb packed_ADSBNAME.pdb
