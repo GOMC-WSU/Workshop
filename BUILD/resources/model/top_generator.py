@@ -2,7 +2,7 @@ import os
 import re
 import math
 import glob
-import fnmatch
+import sys
 
 
 # replace it in topology file
@@ -85,21 +85,36 @@ def replace_text(filename, text_to_search, replacement_text):
 
 #########################################
 # Main function
-if "charge" in top_file:
-    elect = True
-    keyword = "_atom_site_charge"
-else:
-    elect = False
-    keyword = "_atom_site_type_symbol"
-
 allMolecule = []
 reachedAtom = False
+elect = False
+keywordfound = True
+
+#find the correct atom tag
+with open(mof_file, 'r') as infile:
+    for line in infile:
+        line = re.sub(' +', ' ', line).strip()
+        if line.startswith("_atom_site_charge"):
+            keyword = "_atom_site_charge"
+            elect = True
+            keywordfound = True
+            break
+        elif line.startswith("_atom_site_type_symbol"):
+            keyword = "_atom_site_type_symbol"
+            elect = False
+            keywordfound = True
+            break
+
+if not keywordfound:
+    print("ERROR: No tag detected to read the atom data in " + mof_file)
+    print("Available tag: '_atom_site_charge' or '_atom_site_type_symbol'")
+    sys.exit(-1)
+
 
 with open(mof_file, 'r') as file:
     for line in file:
         line = re.sub(' +', ' ', line).strip()
         if line.startswith(keyword):
-            print("Start Reading " + line)
             reachedAtom = True
             continue
         
