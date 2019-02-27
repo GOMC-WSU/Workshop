@@ -22,5 +22,5 @@
 
 # IMPORTANT:
 1. Inspect the parameter files in `./BUILD/resources/model` for accuracy of the bonded and non-bonded parameters.
-2. Interaction between atomtype can be modified using  `NBFIX` for CHARMM style, or `NBFIX_MIE` for Mie        style parameter file. For more information, refere to [GOMC Documentation]([http://gomc.eng.wayne.edu/manual/input_file.html#nbfix]).
+2. Interaction between atomtype can be modified using  `NBFIX` for CHARMM style, or `NBFIX_MIE` for Mie        style parameter file. For more information, refere to [GOMC Documentation](http://gomc.eng.wayne.edu/manual/input_file.html#nbfix "GOMC non-bonded").
 3. For assigning charges, this script uses the charge, provided in `*.cif` file. If you are intrested to use       different charge, you need to modify the charge value in `*.cif` file.
