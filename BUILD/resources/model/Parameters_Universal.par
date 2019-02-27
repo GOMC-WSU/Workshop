@@ -145,14 +145,19 @@ PO	4.20	163.04	12
 AT	4.23	142.91	12
 FR	4.37	25.16	12
 RA	3.28	203.30	12
-
-
 ! Noble gases
 NE       32.30       2.794      11   ! JR Mick et al. 2015
 AR      122.10       3.405      13   ! JR Mick et al. 2015
 KR      176.10       3.645      14   ! JR Mick et al. 2015 
 XE      243.80       3.964      14   ! JR Mick et al. 2015 
 RN      292.00       4.145      12   ! JR Mick et al. 2016 
+
+
+NBFIX_MIE
+!V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]
+!
+!atomType   atomType    epsilon     sigma	  N	   epsilon(1-4)	  sigma(1-4)	N(1-4)
+
 
 
 
