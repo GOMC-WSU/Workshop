@@ -235,6 +235,7 @@ for cifFile in allFiles:
     # Create Reservoir Base
     os.chdir('../reservoir')
     shutil.copyfile(base_directory + '/BUILD/resources/pack/pack_box_1.inp', './pack_box_1.inp')
+    shutil.copyfile(base_directory + '/BUILD/resources/pack/packmol', './packmol')
     shutil.copyfile(base_directory + '/BUILD/resources/pack/build_psf_box_1.tcl', './build_psf_box_1.tcl')
     shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_model_input, "./" + top_model_input)
 
