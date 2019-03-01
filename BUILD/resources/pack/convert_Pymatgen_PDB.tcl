@@ -1,3 +1,4 @@
+puts "Modifying PDB file for MOFNAME_clean_min.xyz !\n"
 #set your file name without ".xyz"
 ###################################
 set filename MOFNAME_clean_min
@@ -44,3 +45,6 @@ $all set occupancy 0.0
 $all set beta 1.0
 
 $all writepdb "$outfile.pdb"
+
+puts "Finished modifying PDB file for MOFNAME_clean_min.xyz !\n"
+puts "################################################################################\n\n"

@@ -1,3 +1,5 @@
+puts "Generatinf PDB and PSF files for packed_ADSBNAME.pdb !\n"
+
 package require psfgen
 
 topology ./TOPFILENAME
@@ -12,3 +14,6 @@ coordpdb ./packed_ADSBNAME.pdb ADSBSET
 
 writepsf ./START_BOX_1.psf
 writepdb ./START_BOX_1.pdb
+
+puts "Finished Generatinf PDB and PSF files for packed_ADSBNAME.pdb !\n"
+puts "################################################################################\n\n"

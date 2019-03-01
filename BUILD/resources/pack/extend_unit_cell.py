@@ -86,6 +86,8 @@ extend_y = int(YYY)
 extend_z = int(ZZZ)
 
 
+print("################################################################################\n")
+print("Extending unit cell for %s!\n" % cif_file)
 # Read Cell Basis information
 print("Reading cell information from " + cif_file)
 cell_length_a = float(FindParameter(cif_file, '_cell_length_a'))
@@ -162,4 +164,5 @@ with open(output_file, 'w') as outfile:
 
 
 replace_text(output_file, "TOTALATOM", str(counter))
-                        
+print("Finished extending unit cell for %s!\n" % cif_file)
+print("################################################################################\n\n")

@@ -197,10 +197,10 @@ for cifFile in allFiles:
     replace_text('convert_Pymatgen_PDB.tcl', 'MOFNAME', mof_name)
 
     print("1.1 Generating Topology file for MOF.")
-    os.system('python top_generator.py' + '>> build.log 2>&1')
+    os.system('python top_generator.py' + '>> build_error.log 2>&1')
 
     print("1.2 Extending unit cell and generating XYZ file for MOF.")
-    os.system('python extend_unit_cell.py' + '>> build.log 2>&1')
+    os.system('python extend_unit_cell.py' + '>> build_error.log 2>&1')
 
     if os.path.isfile(mof_name + "_clean_min.xyz"):
         print("1.3 Unit cell extended and XYZ file generated successfully.")
@@ -210,7 +210,7 @@ for cifFile in allFiles:
         sys.exit(-1)
 
     print("1.4 Converting XYZ file to formatted PDB for MOF.")
-    os.system("vmd -dispdev text < convert_Pymatgen_PDB.tcl" + '>> build.log 2>&1')
+    os.system("vmd -dispdev text < convert_Pymatgen_PDB.tcl" + '>> build_error.log 2>&1')
     if len(glob.glob("*_modified.pdb")) != 0:
         print("1.5 PDB file formatting completed successfully")
     else:
@@ -218,8 +218,8 @@ for cifFile in allFiles:
         sys.exit(-1)
 
     print("1.6 Generating PSF file for MOF.")
-    os.system("vmd -dispdev text < build_psf_box_0.tcl" + '>> build.log 2>&1')
-    os.system("vmd -dispdev text < setBeta.tcl" + '>> build.log 2>&1')
+    os.system("vmd -dispdev text < build_psf_box_0.tcl" + '>> build_error.log 2>&1')
+    os.system("vmd -dispdev text < setBeta.tcl" + '>> build_error.log 2>&1')
     if len(glob.glob(mof_name + "_BOX_0.psf")) != 0:
         print("1.7 MOF PSF and PDB files generated successfully.")
     else:
@@ -251,7 +251,7 @@ for cifFile in allFiles:
     replace_text('build_psf_box_1.tcl', 'TOPFILENAME', top_model_input)
 
     print("2.1 Packing reservoir box.")
-    os.system("./packmol < pack_box_1.inp" + '>> build.log 2>&1')
+    os.system("./packmol < pack_box_1.inp" + '>> build_error.log 2>&1')
     if len(glob.glob("packed_*")) != 0:
         print("2.1 Reservoir packed succesfully.")
     else:
@@ -259,7 +259,7 @@ for cifFile in allFiles:
         sys.exit(-1)
 
     print("2.2 Building PDB and PSF file for reservoir box.")
-    os.system("vmd -dispdev text < build_psf_box_1.tcl" + '>> build.log 2>&1')
+    os.system("vmd -dispdev text < build_psf_box_1.tcl" + '>> build_error.log 2>&1')
     if len(glob.glob("*.psf")) != 0:
         print("2.2 Reservoir PDB and PSF files generated succesfully.")
     else:

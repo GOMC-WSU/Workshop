@@ -1,3 +1,5 @@
+puts "Generating PDB and PSF files for FILEFILE_clean_min_modified.pdb !\n"
+
 #set your file name without ".pdb"
 ###################################
 set filename FILEFILE_clean_min_modified
@@ -96,3 +98,5 @@ for {set i 0} {$i < $molsize} {incr i} {
     file delete "$thisName.pdb"
 }
 
+puts "Finished Generating PDB and PSF files for FILEFILE_clean_min_modified.pdb !\n"
+puts "################################################################################\n\n"

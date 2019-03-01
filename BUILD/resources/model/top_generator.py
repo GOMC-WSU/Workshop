@@ -13,6 +13,9 @@ mof_file= "MOF-FILENAME"
 top_file = "TOP-FILENAME"
 mof_name = mof_file.split('_')[0]
 
+print("################################################################################")
+print("Generating Topology file for  %s !\n" % mof_file)
+
 
 class molecule(object):
     ''' Holds the residue name, type, number of residue
@@ -138,3 +141,5 @@ for mol in allMolecule:
 
 replace_text(top_file, word_to_replace, "\n \nEND")
 print("Net charge for %s: %.6f" % (mof_name, netcharge))
+print("Finished generating Topology file for %s!\n" % mof_file)
+print("################################################################################\n\n")

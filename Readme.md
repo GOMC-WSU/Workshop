@@ -17,7 +17,7 @@
    ```bash
    $ python ./simulation_setup.py
    ```
-8. If you observed Error in the terminal, inspect the `build.log` file in common sub-directory.
+8. If you observed Error in the terminal, inspect the `build_error.log` file in common sub-directory.
 
 
 # IMPORTANT:
