@@ -123,7 +123,7 @@ for cifFile in allFiles:
     if not os.path.isdir('MOF_base'):
         os.mkdir("MOF_base")
     if not os.path.isdir('reservoir'):
-        os.mkdir("reservoir")
+        os.mkdir("reservoir_base")
     os.chdir('MOF_base')
 
     # Copy MOF cif file into MOF_base directory
@@ -233,7 +233,7 @@ for cifFile in allFiles:
     print("2.  Generating reservoir files.")
 
     # Create Reservoir Base
-    os.chdir('../reservoir')
+    os.chdir('../reservoir_base')
     shutil.copyfile(base_directory + '/BUILD/resources/pack/pack_box_1.inp', './pack_box_1.inp')
     shutil.copyfile(base_directory + '/BUILD/resources/pack/packmol', './packmol')
     shutil.copyfile(base_directory + '/BUILD/resources/pack/build_psf_box_1.tcl', './build_psf_box_1.tcl')
