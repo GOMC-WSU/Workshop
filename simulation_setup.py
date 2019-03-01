@@ -238,6 +238,8 @@ for cifFile in allFiles:
     shutil.copyfile(base_directory + '/BUILD/resources/pack/packmol', './packmol')
     shutil.copyfile(base_directory + '/BUILD/resources/pack/build_psf_box_1.tcl', './build_psf_box_1.tcl')
     shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_model_input, "./" + top_model_input)
+    # give executable permission
+    os.chmod('packmol', 509)
 
     replace_text('pack_box_1.inp', 'ADSBNAME', adsorbate_name)
     replace_text('pack_box_1.inp', 'BASEDIR', base_directory)
@@ -249,7 +251,7 @@ for cifFile in allFiles:
     replace_text('build_psf_box_1.tcl', 'TOPFILENAME', top_model_input)
 
     print("2.1 Packing reservoir box.")
-    os.system("packmol < pack_box_1.inp" + '>> build.log 2>&1')
+    os.system("./packmol < pack_box_1.inp" + '>> build.log 2>&1')
     if len(glob.glob("packed_*")) != 0:
         print("2.1 Reservoir packed succesfully.")
     else:
@@ -318,6 +320,8 @@ for cifFile in allFiles:
         replace_text("gcmc_cluster.cmd", "FFF", run['fugacity'])
         replace_text("in.conf", "TEMPSET", run['temperature'])
         replace_text("in.conf", "FFF", run['fugacity'])
+        # give executable permission
+        os.chmod('GOMC_CPU_GCMC', 509)
         os.chdir('../')
 
     # delete in.conf and list of residue after finished copying
