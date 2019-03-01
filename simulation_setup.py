@@ -48,6 +48,7 @@ def CleanDir(filepattern):
 print("================================================================================")
 print("*** Reading XML file ***")
 e = et.parse(config_file).getroot()
+python_path = e.find('PythonPath').text
 build_all = e.find('HTS').text
 mof_file = e.find('mofname').text
 mof_name = mof_file.split('_')[0]
@@ -197,10 +198,10 @@ for cifFile in allFiles:
     replace_text('convert_Pymatgen_PDB.tcl', 'MOFNAME', mof_name)
 
     print("1.1 Generating Topology file for MOF.")
-    os.system('python top_generator.py' + '>> build_error.log 2>&1')
+    os.system(python_path +' top_generator.py' + '>> build_error.log 2>&1')
 
     print("1.2 Extending unit cell and generating XYZ file for MOF.")
-    os.system('python extend_unit_cell.py' + '>> build_error.log 2>&1')
+    os.system(python_path + ' extend_unit_cell.py' + '>> build_error.log 2>&1')
 
     if os.path.isfile(mof_name + "_clean_min.xyz"):
         print("1.3 Unit cell extended and XYZ file generated successfully.")
