@@ -56,6 +56,7 @@ supercelldim_x = float(e.find('supercelldim').find('x').text)
 supercelldim_y = float(e.find('supercelldim').find('y').text)
 supercelldim_z = float(e.find('supercelldim').find('z').text)
 adsorbate_name = e.find('adsorbate').find('name').text
+adsorbate_pdb = adsorbate_name + '.pdb'
 adsorbate_resname = e.find('adsorbate').find('resname').text
 reservoir_dim = e.find('reservoir').find('dim').text
 reservoir_number = e.find('reservoir').find('number').text
@@ -239,6 +240,7 @@ for cifFile in allFiles:
     shutil.copyfile(base_directory + '/BUILD/resources/pack/packmol', './packmol')
     shutil.copyfile(base_directory + '/BUILD/resources/pack/build_psf_box_1.tcl', './build_psf_box_1.tcl')
     shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_model_input, "./" + top_model_input)
+    shutil.copyfile(base_directory + '/BUILD/resources/pdb/' + adsorbate_pdb, './' + adsorbate_pdb)
     # give executable permission
     os.chmod('packmol', 509)
 
