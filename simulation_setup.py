@@ -243,7 +243,6 @@ for cifFile in allFiles:
     os.chmod('packmol', 509)
 
     replace_text('pack_box_1.inp', 'ADSBNAME', adsorbate_name)
-    replace_text('pack_box_1.inp', 'BASEDIR', base_directory)
     replace_text('pack_box_1.inp', 'DDD0', reservoir_dim)
     replace_text('pack_box_1.inp', 'RESVNUM', reservoir_number)
     replace_text('build_psf_box_1.tcl', 'BASEDIR', base_directory)
