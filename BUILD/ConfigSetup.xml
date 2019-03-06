@@ -30,8 +30,8 @@
 
     <adsorbate>
         <!-- Defining the name and residue name of adsorbate -->
-        <name>nitrogen</name>
-        <resname>N2</resname>
+        <name>argon</name>
+        <resname>AR</resname>
     </adsorbate>
 
     <reservoir>
