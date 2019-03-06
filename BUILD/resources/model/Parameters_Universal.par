@@ -13,6 +13,9 @@
 * Mie potentials fo parameters for neon, argon, krypton, xenon, and radon. 
 * DREIDING force field for IRMOF-1 molecules.
 * 
+* Vapor–liquid equilibria of mixtures containing alkanes, carbon dioxide, and nitrogen
+* DOI: 10.1002/aic.690470719
+*
 
 BONDS
 !
@@ -24,6 +27,8 @@ BONDS
 ! Kb (kcal/mol) = Kb (K) * Boltz. const.; (9999999999 if no stretching)
 !
 !atom type     Kb              b0        description
+CO2   O2C     9999999999999    1.16      ! C-O bond in CO2
+ND    DN      9999999999999    0.55      ! N-dummy bond in N2
 
 
 
@@ -39,6 +44,8 @@ ANGLES
 ! Ktheta (kcal/mol) = Ktheta (K) * Boltz. const.; (9999999999 if fix bond)
 !
 !atom types         Ktheta       Theta0 
+O2C  CO2  O2C   9999999999999     180.00     ! fixed O-C-O angle in CO2
+ND   DN   ND    9999999999999     180.00     ! fixed N-dummy-N angle in N2
 
 
 DIHEDRALS
@@ -151,6 +158,12 @@ AR      122.10       3.405      13   ! JR Mick et al. 2015
 KR      176.10       3.645      14   ! JR Mick et al. 2015 
 XE      243.80       3.964      14   ! JR Mick et al. 2015 
 RN      292.00       4.145      12   ! JR Mick et al. 2016 
+! CO2 
+O2C      79.00       3.050      12   ! Potoff et al. 2001
+CO2      27.00       2.800      12   ! Potoff et al. 2001
+! N2 
+ND       36.00       3.310      12   ! Potoff et al. 2001
+DN       00.00       0.000      12   ! Potoff et al. 2001 (dummy atom in middle of N2)
 
 
 NBFIX_MIE

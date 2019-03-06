@@ -66,9 +66,16 @@ coordfreq = e.find('steps').find('coordfreq').text
 blockfreq = e.find('steps').find('blockfreq').text
 eq_steps = e.find('steps').find('eqsteps').text
 rcut = e.find('rcut').text
+rcutLow = e.find('rcutLow').text
 lrc = e.find('lrc').text
 electrostatic = e.find('electrostatic').text
+rcutcoulomb = e.find('rcutCoulomb').text
 tolerance = e.find('tolerance').text
+cachedFourier = e.find('cachedFourier').text
+
+top_file_adsorbent = "Top_adsorbent.inp"
+top_file_adsorbate = "Top_adsorbate.inp"
+
 runs = []
 for run in e.find('runs').findall('run'):
     run_id = run.find('id').text
@@ -79,10 +86,8 @@ for run in e.find('runs').findall('run'):
 
 if electrostatic.lower() == 'true':
     mof_dir = base_directory + '/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures_with_DDEC_charges/'
-    top_model_input = "Top_" + model + "_charges.inp"
 elif electrostatic.lower() == 'false':
     mof_dir = base_directory + '/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures/'
-    top_model_input = "Top_" + model + ".inp"
 else:
     print("ERROR: ELECTROSTATIC INPUT INVALID")
     print("EXITING...")
@@ -182,10 +187,10 @@ for cifFile in allFiles:
     shutil.copyfile(base_directory + "/BUILD/resources/pack/build_psf_box_0.tcl", "./build_psf_box_0.tcl")
     shutil.copyfile(base_directory + "/BUILD/resources/pack/setBeta.tcl", "./setBeta.tcl")
     shutil.copyfile(base_directory + "/BUILD/resources/model/top_generator.py", "./top_generator.py")
-    shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_model_input, "./" + top_model_input)
+    shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_file_adsorbent, "./" + top_file_adsorbent)
 
     replace_text("top_generator.py", 'MOF-FILENAME', mof_file)
-    replace_text("top_generator.py", 'TOP-FILENAME', top_model_input)
+    replace_text("top_generator.py", 'TOP-FILENAME', top_file_adsorbent)
     replace_text("extend_unit_cell.py", 'FILEFILE', mof_file)
     replace_text("extend_unit_cell.py", 'MOFNAME', mof_name)
     replace_text("extend_unit_cell.py", 'XXX', str(supercelldim_x))
@@ -193,8 +198,7 @@ for cifFile in allFiles:
     replace_text("extend_unit_cell.py", 'ZZZ', str(supercelldim_z))
     replace_text("build_psf_box_0.tcl", 'FILEFILE', mof_name)
     replace_text('build_psf_box_0.tcl', 'MOFNAME', mof_name)
-    #replace_text('build_psf_box_0.tcl', 'BASEDIR', base_directory)
-    replace_text('build_psf_box_0.tcl', 'TOPFILENAME', top_model_input)
+    replace_text('build_psf_box_0.tcl', 'TOPFILENAME', top_file_adsorbent)
     replace_text('setBeta.tcl', 'MOFNAME', mof_name)
     replace_text('convert_Pymatgen_PDB.tcl', 'MOFNAME', mof_name)
 
@@ -239,7 +243,7 @@ for cifFile in allFiles:
     shutil.copyfile(base_directory + '/BUILD/resources/pack/pack_box_1.inp', './pack_box_1.inp')
     shutil.copyfile(base_directory + '/BUILD/resources/pack/packmol', './packmol')
     shutil.copyfile(base_directory + '/BUILD/resources/pack/build_psf_box_1.tcl', './build_psf_box_1.tcl')
-    shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_model_input, "./" + top_model_input)
+    shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_file_adsorbate, "./" + top_file_adsorbate)
     shutil.copyfile(base_directory + '/BUILD/resources/pdb/' + adsorbate_pdb, './' + adsorbate_pdb)
     # give executable permission
     os.chmod('packmol', 509)
@@ -250,7 +254,7 @@ for cifFile in allFiles:
     replace_text('build_psf_box_1.tcl', 'BASEDIR', base_directory)
     replace_text('build_psf_box_1.tcl', 'ADSBSET', adsorbate_resname)
     replace_text('build_psf_box_1.tcl', 'ADSBNAME', adsorbate_name)
-    replace_text('build_psf_box_1.tcl', 'TOPFILENAME', top_model_input)
+    replace_text('build_psf_box_1.tcl', 'TOPFILENAME', top_file_adsorbate)
 
     print("2.1 Packing reservoir box.")
     os.system("./packmol < pack_box_1.inp" + '>> build_error.log 2>&1')
@@ -271,7 +275,7 @@ for cifFile in allFiles:
     print("2.3 Cleaning reservoir directory.")
     CleanDir("START_BOX_1*")
 
-    print("*** MOF PDB and PSF input files succesfully built ***")
+    print("*** ALL PDB and PSF input files succesfully built ***")
     print(" ")
     print("3.  Setting control file.")
 
@@ -285,10 +289,13 @@ for cifFile in allFiles:
     replace_text("in.conf", "ADSBNAME", adsorbate_name)
     replace_text("in.conf", "MOFNAME", mof_name)
     replace_text("in.conf", "RCUTSET", rcut)
+    replace_text("in.conf", "RCUTLOWSET", rcutLow)
     replace_text("in.conf", "LRCSET", lrc)
     replace_text("in.conf", "TOLESET", tolerance)
     replace_text("in.conf", "FFIELD", model)
     replace_text("in.conf", "ELECTSET", electrostatic)
+    replace_text("in.conf", "RCUTCOULOMBSET", rcutcoulomb)
+    replace_text("in.conf", "CACHSET", cachedFourier)
     replace_text("in.conf", "RUNSTEPSET", runsteps)
     replace_text("in.conf", "DDD0", reservoir_dim)
     replace_text("in.conf", "DDD1", box_0_vector1)
@@ -322,6 +329,9 @@ for cifFile in allFiles:
         replace_text("gcmc_cluster.cmd", "FFF", run['fugacity'])
         replace_text("in.conf", "TEMPSET", run['temperature'])
         replace_text("in.conf", "FFF", run['fugacity'])
+        #change the jub script name
+        jobName = mof_name + '_fugacity_' + run['fugacity'] + '_T_' + run['temperature'] + '.cmd'
+        shutil.move('./gcmc_cluster.cmd', './' + jobName)
         # give executable permission
         os.chmod('GOMC_CPU_GCMC', 509)
         os.chdir('../')

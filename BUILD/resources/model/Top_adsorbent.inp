@@ -1,11 +1,10 @@
 *
 * Topology file for MOF adsorption with Noble Gas
-* You need to add your adsorbate section for other molecule
 * MOFs will be added automatically
 
+! Make sure the atom mass is defined here
 !
-!
-!
+
 MASS	1	AG	107.87	AG
 MASS	2	AL	26.98	AL
 MASS	3	AS	74.92	AS
@@ -52,48 +51,13 @@ MASS	43	W	183.84	W
 MASS	44	Y	88.95	Y
 MASS	45	ZN	65.39	ZN
 MASS	46	ZR	91.22	ZR
-MASS	47	NE	20.18	NE
-MASS	48	AR	39.95	AR
-MASS	49	KR	83.8	KR
-MASS	50	XE	131.29	XE
-MASS	51	RN	222	RN
 
 
 DEFA FIRS none LAST none
 AUTOGENERATE ANGLES DIHEDRALS
 
-! Adsorbate
-
-RESI NE 		0.00 !
-GROUP
-ATOM NE NE		0.00 !
-PATCHING FIRS NONE LAST NONE
- 
- 
-RESI AR 		0.00 !
-GROUP
-ATOM AR AR		0.00 !
-PATCHING FIRS NONE LAST NONE
- 
- 
-RESI KR 		0.00 !
-GROUP
-ATOM KR KR		0.00 !
-PATCHING FIRS NONE LAST NONE
- 
- 
-RESI XE 		0.00 !
-GROUP
-ATOM XE XE		0.00 !
-PATCHING FIRS NONE LAST NONE
- 
- 
-RESI RN 		0.00 !
-GROUP
-ATOM RN RN		0.00 !
-PATCHING FIRS NONE LAST NONE
-
 ! Adsorbant. Will be added automatically
 
 !RESIDUE-REPLACEMENT
+ 
 
