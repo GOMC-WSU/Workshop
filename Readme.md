@@ -1,5 +1,5 @@
 # High Throughput Screening (MOFs):
-
+All `*.cif` files are obtained from High-throughput Open Metal Site analysis of [MOF database](http://gregchung.github.io/CoRE-MOFs/) by [Snurr et al.](https://pubs.acs.org/doi/abs/10.1021/cm502594j).
 
 1. Install the packages that are explained in `GOMC_Software_Requirement` document.
 2. Copy the compiled `GOMC_CPU_GCMC` executable file to `./BUILD/resources/sim/` directory.
