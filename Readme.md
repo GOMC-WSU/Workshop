@@ -1,6 +1,16 @@
 # High Throughput Screening (MOFs):
 All `*.cif` files are obtained from High-throughput Open Metal Site analysis of [MOF database](http://gregchung.github.io/CoRE-MOFs/) by [Snurr et al.](https://pubs.acs.org/doi/abs/10.1021/cm502594j).
 
+This tools is developed for GOMC development branch. To clone and compile GOMC development branch,
+execute the following command in your terminal:
+
+```bash
+   $ git clone https://github.com/GOMC-WSU/GOMC.git --branch development --single-branch
+   $ cd ./GOMC/
+   $ chmod u+x metamake.sh
+   $ ./metamake.sh
+```
+
 1. Install the packages that are explained in `GOMC_Software_Requirement` document.
 2. Copy the compiled `GOMC_CPU_GCMC` executable file to `./BUILD/resources/sim/` directory.
 3. Copy the compiled `packmol` executable file to `./BUILD/resources/pack/` directory.
