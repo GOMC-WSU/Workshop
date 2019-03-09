@@ -1,5 +1,5 @@
 <configuration>
-    <PythonPath>~/anaconda2/bin/python</PythonPath> <!-- Sets the path to python executable file -->
+    <PythonPath>~/anaconda3/bin/python</PythonPath> <!-- Sets the path to python executable file -->
 
     <HTS>False</HTS> <!-- Activate the High Throughput Screening -->
 
