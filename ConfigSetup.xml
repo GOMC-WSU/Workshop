@@ -13,20 +13,13 @@
 
     <lrc>False</lrc> <!-- Long range correction activation -->
 
-    <electrostatic>false</electrostatic> <!-- Ewald summation acctivation -->
+    <electrostatic>False</electrostatic> <!-- Ewald summation acctivation -->
 
     <rcutCoulomb>14.0</rcutCoulomb> <!-- Cutoff value for short range electrostatic interaction -->
 
     <tolerance>0.00001</tolerance> <!-- Tolerance value for Ewald summation -->
 
     <cachedFourier>False</cachedFourier> <!--  Store reciprocal terms of Ewald summation calculation -->
-
-    <supercelldim>
-        <!-- Extending unit cell in X, Y, Z direction -->
-        <x>2</x>
-        <y>2</y>
-        <z>2</z>
-    </supercelldim>
 
     <adsorbate>
         <!-- Defining the name and residue name of adsorbate -->

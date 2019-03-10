@@ -19,12 +19,13 @@ execute the following command in your terminal:
     1. Include the single-molecule-pdb file to `./BUILD/resources/pdb/` directory.
     2. Update the topology files for the adsorbate molecule in `./BUILD/resources/model/Top_adsorbate.inp`.
     3. Update the parameter file for the adsorbate molecule in `./BUILD/resources/model` directory.
-6. Configure the simulation parameter by editing the `./BUILD/ConfigSetup.xml` file.
+6. Configure the simulation parameter by editing the `./ConfigSetup.xml` file.
     1. Set the path to your python version in `<PythonPath> your path <\PythonPath>`
     2. To Perform High Throughput Screening, set the `<HTS>True<\HTS>`
     3. To Perform single MOF simulation, set the `<HTS>False<\HTS>`
     4. If eletrostatic is turned off, it uses the cif files in `/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures`
     5. If eletrostatic is turned on, it uses the cif files in `/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures_with_DDEC_charges` 
+    6. Unit cells are exended according to the maximum value of `rcut` and `rcutCoulomb`
 7. Execute the following command in your terminal to generate the simulation files for MOFs. 
    ```bash
    $ python ./simulation_setup.py

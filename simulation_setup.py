@@ -8,41 +8,17 @@ import math
 import glob
 import fnmatch
 
+#import from utility directory
 base_directory = os.path.dirname(os.path.realpath(__file__))
-config_file = base_directory + '/BUILD/ConfigSetup.xml'
+sys.path.append(os.path.abspath(base_directory +"/BUILD/resources/utility/"))
+import top_generator as topGen
+import utility_functions as uf 
+import extend_unit_cell as euc
 
-def replace_text(filename, text_to_search, replacement_text):
-    '''This function will replace <text_to_search> text with
-    <replacement_text> string in <filename>'''
-    with open(filename, 'r') as file:
-        filedata = file.read()
-    filedata = filedata.replace(text_to_search, replacement_text)
-    with open(filename, 'w') as file:
-        file.write(filedata)
 
-def FindParameter(filename, keyword):
-    '''This function will find the keyword in the <filename> and
-    return the second value'''
-    with open(filename, 'r') as file:
-        for line in file:
-            if line.startswith(keyword):
-                line = re.sub(' +', ' ', line).strip()
-                return line.split(' ')[1]
-
-def replace_textWithFile(filename, text_to_search, replacement_file):
-    '''This function will replace <text_to_search> text with
-    <replacement_file> file in <filename>'''
-    with open(replacement_file, 'r') as file:
-        for line in file:
-            replace_text(filename, text_to_search, line.upper() + text_to_search)
-
-    replace_text(filename, text_to_search, '')
-
-# clean all files except the ones with filepattern
-def CleanDir(filepattern):
-    for file in os.listdir('.'):
-        if not fnmatch.fnmatch(file, filepattern):
-            os.remove(file)
+config_file = base_directory + '/ConfigSetup.xml'
+top_file_adsorbent = "Top_adsorbent.inp"
+top_file_adsorbate = "Top_adsorbate.inp"
 
 # Read input file and initialize variables
 print("================================================================================")
@@ -51,10 +27,6 @@ e = et.parse(config_file).getroot()
 python_path = e.find('PythonPath').text
 build_all = e.find('HTS').text
 mof_file = e.find('mofname').text
-mof_name = mof_file.split('_')[0]
-supercelldim_x = float(e.find('supercelldim').find('x').text)
-supercelldim_y = float(e.find('supercelldim').find('y').text)
-supercelldim_z = float(e.find('supercelldim').find('z').text)
 adsorbate_name = e.find('adsorbate').find('name').text
 adsorbate_pdb = adsorbate_name + '.pdb'
 adsorbate_resname = e.find('adsorbate').find('resname').text
@@ -73,8 +45,7 @@ rcutcoulomb = e.find('rcutCoulomb').text
 tolerance = e.find('tolerance').text
 cachedFourier = e.find('cachedFourier').text
 
-top_file_adsorbent = "Top_adsorbent.inp"
-top_file_adsorbate = "Top_adsorbate.inp"
+
 
 runs = []
 for run in e.find('runs').findall('run'):
@@ -86,12 +57,9 @@ for run in e.find('runs').findall('run'):
 
 if electrostatic.lower() == 'true':
     mof_dir = base_directory + '/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures_with_DDEC_charges/'
-elif electrostatic.lower() == 'false':
-    mof_dir = base_directory + '/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures/'
 else:
-    print("ERROR: ELECTROSTATIC INPUT INVALID")
-    print("EXITING...")
-    sys.exit(-1)
+    mof_dir = base_directory + '/BUILD/resources/CoRE-MOF-1.0-DFT-Minimized/minimized_structures/'
+    rcutcoulomb = rcut
 
 
 # Loop through all MOFs and create simulation files
@@ -129,38 +97,19 @@ for cifFile in allFiles:
     os.chdir("common")
     if not os.path.isdir('MOF_base'):
         os.mkdir("MOF_base")
-    if not os.path.isdir('reservoir'):
+    if not os.path.isdir('reservoir_base'):
         os.mkdir("reservoir_base")
     os.chdir('MOF_base')
 
-    # Copy MOF cif file into MOF_base directory
+    # Copy MOF cif file into MOF_base directory and set up the cell basis info and extension using
+    # maximum(rcut and rcutcoulomb)
+    print("Reading cell basis information in " + mof_file)
     shutil.copyfile(mof_path, "./" + mof_file)
-
-    # Generate Cell Basis Vectors
-    cell_length_a = float(FindParameter(mof_file, '_cell_length_a'))
-    cell_length_b = float(FindParameter(mof_file, '_cell_length_b'))
-    cell_length_c = float(FindParameter(mof_file, '_cell_length_c'))
-    cell_angle_alpha = float(FindParameter(mof_file, '_cell_angle_alpha')) / 180
-    cell_angle_beta = float(FindParameter(mof_file, '_cell_angle_beta')) / 180
-    cell_angle_gamma = float(FindParameter(mof_file, '_cell_angle_gamma')) / 180
-    alpha = cell_angle_alpha * math.pi
-    beta = cell_angle_beta * math.pi
-    gamma = cell_angle_gamma * math.pi
-
-    ax = cell_length_a * supercelldim_x
-    ay = 0
-    az = 0
-    bx = cell_length_b * math.cos(gamma) * supercelldim_y
-    by = cell_length_b * math.sin(gamma) * supercelldim_y
-    bz = 0
-    cx = cell_length_c * math.cos(beta) * supercelldim_z
-    cy_base = (math.cos(alpha)-math.cos(beta)*math.cos(gamma))/math.sin(gamma)
-    cy = cell_length_c * ((math.cos(alpha)-math.cos(beta)*math.cos(gamma))/math.sin(gamma))*supercelldim_z
-    cz = cell_length_c * (math.sqrt(math.sin(beta)**2-cy_base**2))*supercelldim_z
-
-    box_0_vector1 = "%.6f %.6f %.6f" % (ax, ay, az)
-    box_0_vector2 = "%.6f %.6f %.6f" % (bx, by, bz)
-    box_0_vector3 = "%.6f %.6f %.6f" % (cx, cy, cz)
+    mof_cellBasis = euc.MOF_Data(mof_file, mof_name, max(rcut, rcutcoulomb))
+    box_vector = mof_cellBasis.GetCellVector()
+    box_0_vector1 = "{:8.4f} {:8.4f} {:8.4f} ".format(*box_vector[0])
+    box_0_vector2 = "{:8.4f} {:8.4f} {:8.4f} ".format(*box_vector[1])
+    box_0_vector3 = "{:8.4f} {:8.4f} {:8.4f} ".format(*box_vector[2])
 
     print("*** PARAMETERS SUMMARY ***")
     print("MOF_NAME: " + mof_name)
@@ -170,11 +119,13 @@ for cifFile in allFiles:
     print("BLOCKFREQ: " + blockfreq)
     print("LRC: " + lrc)
     print("RCUT: " + rcut)
+    print("RCUTLOW: " + rcutLow)
+    print("RCUTCOULOMB: " + rcutcoulomb)
     print("ELECTROSTATIC: " + electrostatic)
     print("TOLERANCE: " + tolerance)
     print("RESERVOIR_DIM: " + reservoir_dim)
     print("RESERVOIR_NUMBER: " + reservoir_number)
-    print("SUPERCELL_EXPANSION_FACTOR: %d x %d x %d" % (supercelldim_x, supercelldim_y, supercelldim_z))
+    print("SUPERCELL_EXPANSION_FACTOR: {:d} x {:d} x {:d}".format(*mof_cellBasis.extend))
     print("CELL BASIS VECTOR 0: " + box_0_vector1)
     print("CELL BASIS VECTOR 1: " + box_0_vector2)
     print("CELL BASIS VECTOR 2: " + box_0_vector3)
@@ -182,31 +133,22 @@ for cifFile in allFiles:
 
     # Create MOF Base
     print("1.  Building MOF files")
-    shutil.copyfile(base_directory + "/BUILD/resources/pack/extend_unit_cell.py", "./extend_unit_cell.py")
     shutil.copyfile(base_directory + "/BUILD/resources/pack/convert_Pymatgen_PDB.tcl", "./convert_Pymatgen_PDB.tcl")
     shutil.copyfile(base_directory + "/BUILD/resources/pack/build_psf_box_0.tcl", "./build_psf_box_0.tcl")
     shutil.copyfile(base_directory + "/BUILD/resources/pack/setBeta.tcl", "./setBeta.tcl")
-    shutil.copyfile(base_directory + "/BUILD/resources/model/top_generator.py", "./top_generator.py")
     shutil.copyfile(base_directory + "/BUILD/resources/model/" + top_file_adsorbent, "./" + top_file_adsorbent)
 
-    replace_text("top_generator.py", 'MOF-FILENAME', mof_file)
-    replace_text("top_generator.py", 'TOP-FILENAME', top_file_adsorbent)
-    replace_text("extend_unit_cell.py", 'FILEFILE', mof_file)
-    replace_text("extend_unit_cell.py", 'MOFNAME', mof_name)
-    replace_text("extend_unit_cell.py", 'XXX', str(supercelldim_x))
-    replace_text("extend_unit_cell.py", 'YYY', str(supercelldim_y))
-    replace_text("extend_unit_cell.py", 'ZZZ', str(supercelldim_z))
-    replace_text("build_psf_box_0.tcl", 'FILEFILE', mof_name)
-    replace_text('build_psf_box_0.tcl', 'MOFNAME', mof_name)
-    replace_text('build_psf_box_0.tcl', 'TOPFILENAME', top_file_adsorbent)
-    replace_text('setBeta.tcl', 'MOFNAME', mof_name)
-    replace_text('convert_Pymatgen_PDB.tcl', 'MOFNAME', mof_name)
+    uf.replace_text("build_psf_box_0.tcl", 'FILEFILE', mof_name)
+    uf.replace_text('build_psf_box_0.tcl', 'MOFNAME', mof_name)
+    uf.replace_text('build_psf_box_0.tcl', 'TOPFILENAME', top_file_adsorbent)
+    uf.replace_text('setBeta.tcl', 'MOFNAME', mof_name)
+    uf.replace_text('convert_Pymatgen_PDB.tcl', 'MOFNAME', mof_name)
 
     print("1.1 Generating Topology file for MOF.")
-    os.system(python_path +' top_generator.py' + '>> build_error.log 2>&1')
+    topGen.MakeTopology(mof_file, top_file_adsorbent)
 
     print("1.2 Extending unit cell and generating XYZ file for MOF.")
-    os.system(python_path + ' extend_unit_cell.py' + '>> build_error.log 2>&1')
+    mof_cellBasis.WriteXYZ()
 
     if os.path.isfile(mof_name + "_clean_min.xyz"):
         print("1.3 Unit cell extended and XYZ file generated successfully.")
@@ -233,7 +175,7 @@ for cifFile in allFiles:
         sys.exit(-1)
 
     print("1.8 Cleaning MOF-base directory")
-    CleanDir(mof_name + "_BOX*")
+    uf.CleanDir(mof_name + "_BOX*")
 
     print(" ")
     print("2.  Generating reservoir files.")
@@ -248,13 +190,13 @@ for cifFile in allFiles:
     # give executable permission
     os.chmod('packmol', 509)
 
-    replace_text('pack_box_1.inp', 'ADSBNAME', adsorbate_name)
-    replace_text('pack_box_1.inp', 'DDD0', reservoir_dim)
-    replace_text('pack_box_1.inp', 'RESVNUM', reservoir_number)
-    replace_text('build_psf_box_1.tcl', 'BASEDIR', base_directory)
-    replace_text('build_psf_box_1.tcl', 'ADSBSET', adsorbate_resname)
-    replace_text('build_psf_box_1.tcl', 'ADSBNAME', adsorbate_name)
-    replace_text('build_psf_box_1.tcl', 'TOPFILENAME', top_file_adsorbate)
+    uf.replace_text('pack_box_1.inp', 'ADSBNAME', adsorbate_name)
+    uf.replace_text('pack_box_1.inp', 'DDD0', reservoir_dim)
+    uf.replace_text('pack_box_1.inp', 'RESVNUM', reservoir_number)
+    uf.replace_text('build_psf_box_1.tcl', 'BASEDIR', base_directory)
+    uf.replace_text('build_psf_box_1.tcl', 'ADSBSET', adsorbate_resname)
+    uf.replace_text('build_psf_box_1.tcl', 'ADSBNAME', adsorbate_name)
+    uf.replace_text('build_psf_box_1.tcl', 'TOPFILENAME', top_file_adsorbate)
 
     print("2.1 Packing reservoir box.")
     os.system("./packmol < pack_box_1.inp" + '>> build_error.log 2>&1')
@@ -273,7 +215,7 @@ for cifFile in allFiles:
         sys.exit(-1)
 
     print("2.3 Cleaning reservoir directory.")
-    CleanDir("START_BOX_1*")
+    uf.CleanDir("START_BOX_1*")
 
     print("*** ALL PDB and PSF input files succesfully built ***")
     print(" ")
@@ -283,29 +225,32 @@ for cifFile in allFiles:
     os.chdir("../")
     par_file = "Parameters_" + model + ".par"
     shutil.copyfile(base_directory + "/BUILD/resources/model/" + par_file, "./" + par_file)
-    shutil.copyfile(base_directory + "/BUILD/resources/sim/in.conf", "./in.conf")
+    if electrostatic.lower() == 'true':
+        shutil.copyfile(base_directory + "/BUILD/resources/sim/elect.conf", "./in.conf")  
+    else:
+        shutil.copyfile(base_directory + "/BUILD/resources/sim/noElect.conf", "./in.conf")
 
-    replace_text("in.conf", "BASEDIR", base_directory)
-    replace_text("in.conf", "ADSBNAME", adsorbate_name)
-    replace_text("in.conf", "MOFNAME", mof_name)
-    replace_text("in.conf", "RCUTSET", rcut)
-    replace_text("in.conf", "RCUTLOWSET", rcutLow)
-    replace_text("in.conf", "LRCSET", lrc)
-    replace_text("in.conf", "TOLESET", tolerance)
-    replace_text("in.conf", "FFIELD", model)
-    replace_text("in.conf", "ELECTSET", electrostatic)
-    replace_text("in.conf", "RCUTCOULOMBSET", rcutcoulomb)
-    replace_text("in.conf", "CACHSET", cachedFourier)
-    replace_text("in.conf", "RUNSTEPSET", runsteps)
-    replace_text("in.conf", "DDD0", reservoir_dim)
-    replace_text("in.conf", "DDD1", box_0_vector1)
-    replace_text("in.conf", "DDD2", box_0_vector2)
-    replace_text("in.conf", "DDD3", box_0_vector3)
-    replace_text("in.conf", "ADSBSET", adsorbate_resname)
-    replace_text("in.conf", "COORDSTEPS", coordfreq)
-    replace_text("in.conf", "CONSSTEPS", blockfreq)
-    replace_text("in.conf", "EQSTEPSET", eq_steps)
-    replace_textWithFile("in.conf", "BASEFUGACITY", "fugacity.txt")
+    uf.replace_text("in.conf", "BASEDIR", base_directory)
+    uf.replace_text("in.conf", "ADSBNAME", adsorbate_name)
+    uf.replace_text("in.conf", "MOFNAME", mof_name)
+    uf.replace_text("in.conf", "RCUTSET", rcut)
+    uf.replace_text("in.conf", "RCUTLOWSET", rcutLow)
+    uf.replace_text("in.conf", "LRCSET", lrc)
+    uf.replace_text("in.conf", "TOLESET", tolerance)
+    uf.replace_text("in.conf", "FFIELD", model)
+    uf.replace_text("in.conf", "ELECTSET", electrostatic)
+    uf.replace_text("in.conf", "RCUTCOULOMBSET", rcutcoulomb)
+    uf.replace_text("in.conf", "CACHSET", cachedFourier)
+    uf.replace_text("in.conf", "RUNSTEPSET", runsteps)
+    uf.replace_text("in.conf", "DDD0", reservoir_dim)
+    uf.replace_text("in.conf", "DDD1", box_0_vector1)
+    uf.replace_text("in.conf", "DDD2", box_0_vector2)
+    uf.replace_text("in.conf", "DDD3", box_0_vector3)
+    uf.replace_text("in.conf", "ADSBSET", adsorbate_resname)
+    uf.replace_text("in.conf", "COORDSTEPS", coordfreq)
+    uf.replace_text("in.conf", "CONSSTEPS", blockfreq)
+    uf.replace_text("in.conf", "EQSTEPSET", eq_steps)
+    uf.replace_textWithFile("in.conf", "BASEFUGACITY", "fugacity.txt")
 
     print(" ")
     print("4.  Creating run directory for " + mof_name)
@@ -323,12 +268,12 @@ for cifFile in allFiles:
         shutil.copyfile('../common/in.conf', './in.conf')
         shutil.copyfile(base_directory +'/BUILD/resources/sim/gcmc_cluster.cmd', './gcmc_cluster.cmd')
         shutil.copyfile(base_directory +'/BUILD/resources/sim/GOMC_CPU_GCMC', './GOMC_CPU_GCMC')
-        replace_text("gcmc_cluster.cmd", "RUN-DIR", directory)
-        replace_text("gcmc_cluster.cmd", "MOFNAME", mof_name)
-        replace_text("gcmc_cluster.cmd", "ADSBNAME", adsorbate_name)
-        replace_text("gcmc_cluster.cmd", "FFF", run['fugacity'])
-        replace_text("in.conf", "TEMPSET", run['temperature'])
-        replace_text("in.conf", "FFF", run['fugacity'])
+        uf.replace_text("gcmc_cluster.cmd", "RUN-DIR", directory)
+        uf.replace_text("gcmc_cluster.cmd", "MOFNAME", mof_name)
+        uf.replace_text("gcmc_cluster.cmd", "ADSBNAME", adsorbate_name)
+        uf.replace_text("gcmc_cluster.cmd", "FFF", run['fugacity'])
+        uf.replace_text("in.conf", "TEMPSET", run['temperature'])
+        uf.replace_text("in.conf", "FFF", run['fugacity'])
         #change the jub script name
         jobName = mof_name + '_fugacity_' + run['fugacity'] + '_T_' + run['temperature'] + '.cmd'
         shutil.move('./gcmc_cluster.cmd', './' + jobName)
