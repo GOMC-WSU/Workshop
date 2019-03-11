@@ -1,6 +1,4 @@
 <configuration>
-    <PythonPath>~/anaconda3/bin/python</PythonPath> <!-- Sets the path to python executable file -->
-
     <HTS>False</HTS> <!-- Activate the High Throughput Screening -->
 
     <mofname>EDUSIF_clean_min.cif</mofname> <!-- Must be defined in building only one MOF system -->

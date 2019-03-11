@@ -24,7 +24,6 @@ top_file_adsorbate = "Top_adsorbate.inp"
 print("================================================================================")
 print("*** Reading XML file ***")
 e = et.parse(config_file).getroot()
-python_path = e.find('PythonPath').text
 build_all = e.find('HTS').text
 mof_file = e.find('mofname').text
 adsorbate_name = e.find('adsorbate').find('name').text
