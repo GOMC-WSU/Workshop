@@ -5,8 +5,8 @@
         <model>Universal</model> <!-- Topology and Paramter Keyword -->
 
         <HTS>
-            <active>True</active> <!-- Activate the High Throughput Screening -->
-            <mofname>QAMVEH01_clean.cif</mofname> <!-- Must be defined if building only one MOF system -->
+            <active>False</active> <!-- Activate the High Throughput Screening -->
+            <mofname>EDUSIF_clean.cif</mofname> <!-- Must be defined if building only one MOF system -->
         </HTS> 
 
         <adsorbate>
@@ -72,7 +72,7 @@
 
         <element name="electrostatic">   
             <!-- Ewald summation acctivation -->
-            <value>True</value>
+            <value>False</value>
             <keyword>ELECTSET</keyword>
         </element>
 

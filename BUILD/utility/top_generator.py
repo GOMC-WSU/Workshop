@@ -208,22 +208,20 @@ def MakeTopology(topGen, top_file, extension):
     the topology file'''
 
     # rfix string in topology file
-    word_to_replace = "!RESIDUE-REPLACEMENT"  
     patch_text = "PATCHING FIRS NONE LAST NONE \n\n"  
-
-    #topGen.DetectTag()
-    #topGen.ReadCharges()
     netcharge = topGen.totalCharge * extension
     resname = topGen.mof_file[:4]
 
     # Insert the residue information in to the topology file
     out = "RESI  %5s         %.6f  !\n" % (resname, netcharge)
-    uf.replace_text(top_file, word_to_replace, out + word_to_replace)
+    file = open(top_file, 'a')
+    file.write(out)
 
     for mol in topGen.moleculeMap:
         for i in range(mol.molCount * extension):
-            uf.replace_text(top_file, word_to_replace, mol.GetAtom() + word_to_replace)
+            file.write(mol.GetAtom())
 
-    uf.replace_text(top_file, word_to_replace, patch_text + word_to_replace)
-    uf.replace_text(top_file, word_to_replace, "\n \nEND")
+    file.write(patch_text)
+    file.write("\n\nEND")
+    file.close()
     print("           Net charge for %s: %.6f" % (topGen.mof_file, netcharge))
