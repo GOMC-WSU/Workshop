@@ -1,4 +1,4 @@
-psfgen<<ENDMOL
+package require psfgen
 
 topology ../topology_EDUSIF.inp
 
