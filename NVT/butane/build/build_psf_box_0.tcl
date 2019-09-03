@@ -1,4 +1,4 @@
-psfgen<<ENDMOL
+package require psfgen
 
 topology ./top_butane_ua.top
 

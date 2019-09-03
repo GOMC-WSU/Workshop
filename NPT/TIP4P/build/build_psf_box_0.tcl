@@ -1,4 +1,4 @@
-psfgen<<ENDMOL
+package require psfgen
 
 topology ./top_TIP4P_water.inp
 
