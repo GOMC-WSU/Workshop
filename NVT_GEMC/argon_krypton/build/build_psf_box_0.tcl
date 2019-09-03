@@ -3,7 +3,7 @@ psfgen<<ENDMOL
 topology ./top_NobleGases.inp
 
 exec grep "AR" packed_argon_krypton_liq.pdb > Ar.pdb
-exec grep "KR" packed_argon_krypton_liq.pdb > kr.pdb
+exec grep "KR" packed_argon_krypton_liq.pdb > Kr.pdb
 
 segment AR {
     pdb ./Ar.pdb
