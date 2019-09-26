@@ -409,6 +409,27 @@ int main()
 	 weight[0] = oldweight[0] = 1.0;	 
 	 //cout << "Converge 0-" << kfile << ": " 
 	 //     << setprecision(10) << maxd <<endl;
+	 ofstream fout;
+	fout.open("weights.dat");
+	fout << ncompin <<endl << nhist <<endl <<suffix << endl;
+	for (int ifile=0; ifile <nhist; ++ifile)
+	{
+	   fout << setw(4) << histid[ifile] << setw(10)
+		<< nentry[ifile] << setw(20) << std::scientific 
+		<< setprecision(8) << weight[ifile] << setw(10)
+		<< std::fixed << setprecision(2) << t[ifile] 
+		<< setw(10) << mu[ifile][0] << setw(10) 
+		<< mu[ifile][1]<<endl;
+	}
+	fout << "Total iteractions = " << iter << endl
+	     << "Convergence = " << setprecision(10) 
+	     << maxd << endl << "Run time "
+	     << ((clock() - start_time)/(double)CLOCKS_PER_SEC) 
+	  << " (s)" <<endl;
+	fout.close();
+	cout << ((clock() -
+	       conv_step_start_time)/(double)CLOCKS_PER_SEC)
+	     << " (s)" <<endl;
       }
       //normalize weights'
       
