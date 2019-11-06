@@ -1,0 +1,478 @@
+* Parameter file for GOMC
+*
+* Optimized Mie potentials for phase equilibria: Application to noble gases 
+* and their mixtures with n-alkanes 
+* DOI: 10.1063/1.4930138
+*
+* Prediction of Radon-222 Phase Behavior by Monte Carlo Simulation
+* DOI: 10.1021/acs.jced.5b01002
+* 
+* DREIDING: a generic force field for molecular simulations
+* DOI: 10.1021/j100389a010
+*
+* Mie potentials fo parameters for neon, argon, krypton, xenon, and radon. 
+* DREIDING force field for IRMOF-1 molecules.
+* 
+* Vapor–liquid equilibria of mixtures containing alkanes, carbon dioxide, and nitrogen
+* DOI: 10.1002/aic.690470719
+*
+
+BONDS
+!
+!V(bond) = Kb(b - b0)**2
+!
+!Kb: kcal/mole/A**2 
+!b0: A
+!
+! Kb (kcal/mol) = Kb (K) * Boltz. const.; (9999999999 if no stretching)
+!
+!atom type     Kb              b0        description
+CO2   O2C     9999999999999    1.16      ! C-O bond in CO2
+ND    DN      9999999999999    0.55      ! N-dummy bond in N2
+
+
+
+ANGLES
+!
+!V(angle) = Ktheta(Theta - Theta0)**2
+!
+!V(Urey-Bradley) = Kub(S - S0)**2
+!
+!Ktheta: kcal/mole/rad**2
+!Theta0: degrees
+!
+! Ktheta (kcal/mol) = Ktheta (K) * Boltz. const.; (9999999999 if fix bond)
+!
+!atom types         Ktheta       Theta0 
+O2C  CO2  O2C   9999999999999     180.00     ! fixed O-C-O angle in CO2
+ND   DN   ND    9999999999999     180.00     ! fixed N-dummy-N angle in N2
+
+
+DIHEDRALS
+!
+!V(dihedral) = Kchi(1 + cos(n(chi) - delta))
+!
+!Kchi: kcal/mole
+!n: multiplicity
+!delta: degrees
+!
+! Kchi (kcal/mol) = Kchi (K) * Boltz. const.
+!
+! NOTE: Dihedral series is refitted to standard CHARMM form which
+!   differs from form found in the source paper.
+!
+!atom types         Kchi        n    delta              description
+
+
+
+NONBONDED_MIE
+!
+!V(mie) = 4*eps*((sig_ij/r_ij)N-(sig_ij/r_ij)6)
+!
+!atom 	eps	sig 	n 	eps,1-4	 sig,1-4	n,1-4
+H     22.14    2.57    12
+LI    12.58    2.18    12
+BE    42.77    2.45    12
+B     75.48    3.64    12
+C     52.84    3.43    12
+N     34.72    3.26    12
+O     30.19    3.12    12
+F     25.16    3.00    12
+NA    15.10    2.66    12
+MG    55.86    2.69    12
+AL   254.13    4.01    12
+SI   202.29    3.83    12
+P    153.48    3.69    12
+S    137.88    3.59    12
+CL   114.23    3.52    12
+K     17.61    3.40    12
+CA   119.77    3.03    12
+SC     9.56    2.94    12
+TI     8.55    2.83    12
+V      8.05    2.80    12
+CR     7.55    2.69    12
+MN     6.54    2.64    12
+FE     6.54    2.59    12
+CO     7.05    2.56    12
+NI     7.55    2.52    12
+CU     2.52    3.11    12
+ZN    62.40    2.46    12
+GA   208.84    3.90    12
+GE   190.72    3.81    12
+AS   155.49    3.77    12
+SE   146.44    3.75    12
+BR   126.31    3.73    12
+RB   20.13    3.67    12
+SR   118.26    3.24    12
+Y     36.23    2.98    12
+ZR    34.72    2.78    12
+NB    29.69    2.82    12
+MO    28.18    2.72    12
+TC    24.15    0.04    12
+RU    28.18    2.64    12
+RH    26.67    2.61    12
+PD    24.15    2.58    12
+AG    18.12    2.80    12
+CD   114.73    2.54    12
+IN   301.43    3.98    12
+SN   285.33    3.91    12
+SB   225.95    3.94    12
+TE   200.28    0.35    12
+I    170.59    4.01    12
+CS    22.64    4.02    12
+BA   183.17    3.30    12
+LA     8.55    3.14    12
+CE     6.54    3.17    12
+PR     5.03    3.21    12
+ND     5.03    3.18    12
+PM     4.53    3.16    12
+SM     4.03    3.14    12
+EU     4.03    3.11    12
+GD     4.53    3.00    12
+TB     3.52    3.07    12
+DY     3.52    3.05    12
+HO     3.52    3.04    12
+ER     3.52    3.02    12
+TM     3.02    3.01    12
+YB   114.73    2.99    12
+LU    20.63    3.22    12
+HF    36.23    2.80    12
+TA    40.76    2.82    12
+W     33.72    2.73    12
+RE    33.21    2.63    12
+OS    18.62    2.78    12
+IR    36.74    2.53    12
+PT    40.26    2.45    12
+AU    19.63    2.93    12
+HG   193.74    2.41    12
+TL   342.19    3.87    12
+PB   333.63    3.83    12
+BI   260.67    3.89    12
+PO   163.04    4.20    12
+AT   142.91    4.23    12
+FR    25.16    4.37    12
+RA   203.30    3.28    12
+! Noble gases
+NE       32.30       2.794      11   ! JR Mick et al. 2015
+AR      122.10       3.405      13   ! JR Mick et al. 2015
+KR      176.10       3.645      14   ! JR Mick et al. 2015 
+XE      243.80       3.964      14   ! JR Mick et al. 2015 
+RN      292.00       4.145      12   ! JR Mick et al. 2016 
+! CO2 
+O2C      79.00       3.050      12   ! Potoff et al. 2001
+CO2      27.00       2.800      12   ! Potoff et al. 2001
+! N2 
+ND       36.00       3.310      12   ! Potoff et al. 2001
+DN       00.00       0.000      12   ! Potoff et al. 2001 (dummy atom in middle of N2)
+
+
+NBFIX_MIE
+!V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]
+!
+!atomType   atomType    epsilon     sigma	  N	   epsilon(1-4)	  sigma(1-4)	N(1-4)
+C    C    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    H    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    O    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    B    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    N    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    F    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    AL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    SI   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    CL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    GA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+C    ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    H    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    O    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    B    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    N    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    F    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    AL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    SI   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    CL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    GA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+H    ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   O    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   B    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   N    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   F    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   AL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   SI   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   CL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   GA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    O    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    B    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    N    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    F    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    AL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    SI   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    CL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    GA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+O    ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    B    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    N    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    F    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    AL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    SI   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    CL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    GA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+B    ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    N    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    F    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    AL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    SI   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    CL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    GA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+N    ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    F    0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    AL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    SI   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    CL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    GA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+F    ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   AL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   SI   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   CL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   GA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AL   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   SI   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   CL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   GA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SI   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   CL   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   GA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CL   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   GA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GA   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   GE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+GE   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   AS   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+AS   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SE   SE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SE   BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SE   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SE   SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SE   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SE   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SE   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SE   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SE   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SE   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SE   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+BR   BR   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+BR   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+BR   SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+BR   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+BR   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+BR   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+BR   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+BR   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+BR   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+BR   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SN   SN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SN   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SN   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SN   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SN   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SN   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SN   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SN   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SB   SB   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SB   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SB   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SB   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SB   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SB   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+SB   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+TE   TE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+TE   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+TE   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+TE   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+TE   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+TE   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   IN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+IN   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+NA   NA   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+NA   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+NA   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+NA   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CU   CU   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CU   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+CU   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+FE   FE   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+FE   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+ZN   ZN   0.0000   0.0000       12 ! ignore adsorbent adsorbent interaction
+
+
+
+End
+
+
