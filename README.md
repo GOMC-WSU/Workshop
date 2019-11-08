@@ -6,4 +6,8 @@ The order of performing the workshop is as follow:
 
 1. adsorption/AR_IRMOF1
 2. adsorption/CO2_IRMOF1
+3. freeEnergy/NE
+4. freeEnergy/AR
+5. freeEnergy/KR
+
 

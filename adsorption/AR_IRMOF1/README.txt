@@ -1,7 +1,7 @@
 # Create the simulaiton files for AR adsorption in IRMOF-1, using 
 # "simulation_setup.py" script for python 3
 
-python ./simulation_setup.py
+python3.7 ./simulation_setup.py
 
 # Change your directory to the first adsorption simulation in 1 bar
 
@@ -9,7 +9,7 @@ cd run_files/EDUSIF/RUN1-FUGACITY-1.0-TEMPERATURE-298/
 
 ##############################################################################
 # 1:
-# Run the GOMC simulation in GCMC for 1 million steps.
+# Run the GOMC in GCMC simulation for 1 million steps.
 # Assuming that GOMC binary is added to the path:
 
 GOMC_CPU_GCMC +p1 in.conf > output_AR.log &
@@ -18,7 +18,7 @@ GOMC_CPU_GCMC +p1 in.conf > output_AR.log &
 
 tail -f output_AR.log
 
-# Wait until simulation finished, then exit command by typing "ctrl C"
+# Wait until simulation finished, then exit by typing "ctrl c"
 
 ##############################################################################
 # 2:
