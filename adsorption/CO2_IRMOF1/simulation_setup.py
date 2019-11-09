@@ -119,7 +119,7 @@ for cifFile in allFiles:
     uf.replace_text('build_psf_box_1.tcl', 'TOPFILENAME', top_file_adsorbate)
 
     print("\t1. Packing reservoir box.")
-    os.system("./packmol < pack_box_1.inp" + '>> build_error.log 2>&1')
+    os.system("packmol < pack_box_1.inp" + '>> build_error.log 2>&1')
     if len(glob.glob("packed_*")) != 0:
         print("\t2. Reservoir packed succesfully.")
     else:

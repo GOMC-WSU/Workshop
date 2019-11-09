@@ -1,7 +1,14 @@
-# Create the simulaiton files for CO2 adsorption in IRMOF-1, using "simulation_setup.py"
+# Our goal is to add new adsorbate (CO2) to HTS. To do that, we need to
+# 1. Add CO2 topology to BUILD/molel/Top_adsorbate.inp
+# 2. Add CO2 force field parameters to “BUILD/molel/Parameters_Universal.par”
+# 3. Add the single CO2 pdb file (carbondioxide.pdb) to “BUILD/” directory, however
+# for this example, we already added this file.
+
+##############################################################################
+# Create the simulation files for CO2 adsorption in IRMOF-1, using "simulation_setup.py"
 # script for python 3
 
-python3.7 ./simulation_setup.py
+python ./simulation_setup.py
 
 # Change your directory to the first adsorption simulation in 1 bar
 
@@ -45,7 +52,7 @@ xmgrace mol_CO2_avg.dat mol_CO2_fluct.dat &
 vmd CO2_EDUSIF_*_merged.psf CO2_EDUSIF_*_BOX_0.pdb &
 
 # Open TkConsole window from Extensions/Tk Console
-# Execute the following command in TkConsole to draw the simulaiton box and wrap 
+# Execute the following command in TkConsole to draw the simulation box and wrap 
 # the adsorbent
 
 pbc box

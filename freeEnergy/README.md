@@ -1,5 +1,5 @@
 # Workshop
-This repository provides example and instruction to learn about GOMC and its capabilities to perform adsorption simulaiton and free energy calculation.
+This repository provides example and instruction to learn about GOMC and its capabilities to perform adsorption simulation and free energy calculation.
 In each directory, there is a README.txt or pdf file to instruct the user.
 
 The order of performing the workshop is as follow:

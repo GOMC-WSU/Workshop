@@ -85,7 +85,7 @@ cp  ../states/state*/Free_Energy_BOX_0_PRODUCTION_*.dat ./data/.
 
 # Calculate the solvation free energy with alchemlyb using python3
 
-python3.7 ./free_energy_calc.py
+python ./free_energy_calc.py
 
 # Calculate the solvation free energy with alchemical-analysis using python2
 

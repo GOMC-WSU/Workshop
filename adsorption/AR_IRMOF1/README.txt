@@ -1,7 +1,14 @@
-# Create the simulaiton files for AR adsorption in IRMOF-1, using 
-# "simulation_setup.py" script for python 3
+# Open the ConfigSetup.xml and replace the “Fill-by-user” with correct string or value
+# Our goal is to simulation_setup argon adsorption in IRMOF at 298 K and two 
+# different pressures, 1.0 bar and 10.0 bar. 
+# Argon pdb name is “argon.pdb” and Argon resname is “AR”
+# We want to pack 1000 argon in 60 A box
 
-python3.7 ./simulation_setup.py
+##############################################################################
+# After modifying the ConfigSetup.xml, create the simulation files for AR 
+# adsorption in IRMOF-1, using "simulation_setup.py" script for python 3
+
+python ./simulation_setup.py
 
 # Change your directory to the first adsorption simulation in 1 bar
 
@@ -45,7 +52,7 @@ xmgrace mol_AR_avg.dat mol_AR_fluct.dat &
 vmd AR_EDUSIF_*_merged.psf AR_EDUSIF_*_BOX_0.pdb &
 
 # Open TkConsole window from Extensions/Tk Console
-# Execute the following command in TkConsole to draw the simulaiton box and wrap 
+# Execute the following command in TkConsole to draw the simulation box and wrap 
 # the adsorbent
 
 pbc box
