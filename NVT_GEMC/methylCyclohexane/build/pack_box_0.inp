@@ -1,9 +1,0 @@
-tolerance 4.0
-filetype pdb
-
-output packed_mC6cycle_liq.pdb
-
-structure ./singleMolecule/mC6cycle.pdb
-  number 400
-  inside cube 0.1 0.1 0.1 52. 
-end structure

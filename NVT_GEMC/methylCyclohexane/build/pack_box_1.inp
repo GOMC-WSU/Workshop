@@ -1,9 +1,0 @@
-tolerance 7.0
-filetype pdb
-
-output packed_mC6cycle_vap.pdb
-
-structure ./singleMolecule/mC6cycle.pdb 
-  number 100
-  inside cube 0.1 0.1 0.1 70. 
-end structure
