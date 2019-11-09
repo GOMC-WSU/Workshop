@@ -79,7 +79,7 @@ tail -f output_state_3.log
 
 cd ../../result
 
-# Copy the free energy files into "data" direcotry
+# Copy the free energy files into "data" directory
 
 cp  ../states/state*/Free_Energy_BOX_0_PRODUCTION_*.dat ./data/.
 
@@ -89,6 +89,6 @@ python ./free_energy_calc.py
 
 # Calculate the solvation free energy with alchemical-analysis using python2
 
-alchemical_analysis -a gomc -d data -p Free_Energy_BOX_0_PRODUCTION_ -q dat -g True -w True -f 10 -u 'kcal' -o plots -m '-ti_cubic-DEXP-IEXP'
+alchemical_analysis -a gomc -d data -p Free_Energy_BOX_0_PRODUCTION_ -q dat -g True -w True -f 10 -u 'kcal' -o plots -m '-DEXP-IEXP'
 
 # Visualize the results in "plots" directory
