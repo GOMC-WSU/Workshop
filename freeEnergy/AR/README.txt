@@ -1,3 +1,13 @@
+# Before we run the nVT simulation for free energy calculation, we need to setup
+# free nergy parameters for GOMC.
+# Open the “prod.conf” with a text editor and replace the “Fill-by-user” with 
+# correct value or values in the following directories.
+# states/state_0/.
+# states/state_1/.
+# states/state_2/.
+# states/state_3/.
+
+##############################################################################
 # Calculating solvation free energy of Ar in cyclohexane 
 # Performin NVT simulation for 4 intermediate states
  
