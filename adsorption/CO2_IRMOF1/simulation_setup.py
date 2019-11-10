@@ -162,7 +162,7 @@ for cifFile in allFiles:
         dir = os.getcwd()
         uf.Copy('../common/in.conf', './in.conf')
         uf.Copy(base_directory +'/BUILD/sim/gcmc_cluster.cmd', './gcmc_cluster.cmd')
-        uf.Copy(base_directory +'/BUILD/sim/GOMC_CPU_GCMC', './GOMC_CPU_GCMC')
+        #uf.Copy(base_directory +'/BUILD/sim/GOMC_CPU_GCMC', './GOMC_CPU_GCMC')
         conf.Write_runData("in.conf", i, dir + to_print)
         shutil.move('./gcmc_cluster.cmd', './' + to_print + '.sh')
         # give executable permission

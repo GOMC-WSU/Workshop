@@ -1,7 +1,6 @@
 # Our goal is to add new adsorbate (CO2) to HTS. To do that, we need to
 # 1. Add CO2 topology to BUILD/molel/Top_adsorbate.inp
 # 2. Add CO2 force field parameters to “BUILD/molel/Parameters_Universal.par”
-# 3. Add the single CO2 pdb file (carbondioxide.pdb) to “BUILD/” directory, however
 # for this example, we already added this file.
 
 ##############################################################################
