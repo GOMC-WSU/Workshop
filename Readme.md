@@ -1,12 +1,12 @@
 # High Throughput Screening (MOFs):
 All `*.cif` files are obtained from High-throughput Open Metal Site analysis of [MOF database](http://gregchung.github.io/CoRE-MOFs/) by [Snurr et al.](https://pubs.acs.org/doi/abs/10.1021/cm502594j).
 
-This tools is developed for GOMC development branch. To clone and compile GOMC development branch,
+This tool is developed for GOMC development branch. To clone and compile GOMC development branch,
 execute the following command in your terminal:
 
 ```bash
-   $ git clone https://github.com/GOMC-WSU/GOMC.git --branch development --single-branch
-   $ cd ./GOMC/
+   $ git clone --branch development --single-branch https://github.com/GOMC-WSU/GOMC.git
+   $ cd ./GOMC
    $ chmod u+x metamake.sh
    $ ./metamake.sh
 ```
@@ -29,7 +29,7 @@ execute the following command in your terminal:
    ```bash
    $ python ./simulation_setup.py
    ```
-8. If you observed Error in the terminal, inspect the `build_error.log` file in common sub-directory.
+8. If you observed an error in the terminal, inspect the `build_error.log` file in the common sub-directory.
 
 
 # IMPORTANT:
